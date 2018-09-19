@@ -1,0 +1,21 @@
+.DS_Store
+/captures
+.externalNativeBuild
+.classpath
+.project
+.settings
+
+# Gradle
+.gradle
+jniLibs
+build
+local.properties
+reports
+
+# IntelliJ
+.idea
+*.iml
+*.iws
+*.ipr
+classes
+gen-external-apklibs
