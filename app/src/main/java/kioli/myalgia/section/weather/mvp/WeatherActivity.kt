@@ -2,6 +2,7 @@ package kioli.myalgia.section.weather.mvp
 
 import android.os.Bundle
 import android.view.View
+import com.squareup.picasso.Picasso
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
@@ -44,6 +45,9 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
     }
 
     override fun returnResultWeather(weather: WeatherModel?) {
-        weather?.current?.let { text.text = it.temperature.toString() }
+        weather?.current?.let {
+            Picasso.get().load(it.condition.icon).into(weather_img)
+            weather_temp.text = it.temperature_c.toString()
+        }
     }
 }
