@@ -12,9 +12,9 @@ internal class WeatherRepository(
         private val localDataSource: LocalDataSource,
         private val networkDataSource: NetworkDataSource) {
 
-    fun getWeather(policy: CachePolicy): Either<Error, WeatherModel> {
+    fun getWeather(policy: CachePolicy, latitude: Double, longitude: Double): Either<Error, WeatherModel> {
         return when (policy) {
-            NetworkFirst -> networkDataSource.getWeather().fold(
+            NetworkFirst -> networkDataSource.getWeather(latitude, longitude).fold(
                     {
                         Log.w("MyAlgia", "error loading weather from network: $it")
                         localDataSource.getWeather()
@@ -26,14 +26,14 @@ internal class WeatherRepository(
             LocalFirst -> localDataSource.getWeather().fold(
                     {
                         Log.w("MyAlgia", "error loading weather from local cache: $it")
-                        networkDataSource.getWeather().map {
+                        networkDataSource.getWeather(latitude, longitude).map {
                             localDataSource.saveWeather(it)
                             it
                         }
                     },
                     { it.right() })
             LocalOnly -> localDataSource.getWeather()
-            NetworkOnly -> networkDataSource.getWeather().map {
+            NetworkOnly -> networkDataSource.getWeather(latitude, longitude).map {
                 localDataSource.saveWeather(it)
                 it
             }

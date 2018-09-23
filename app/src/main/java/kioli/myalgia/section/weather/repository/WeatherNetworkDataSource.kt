@@ -13,11 +13,11 @@ class WeatherNotFound : Error.FeatureError()
 internal class WeatherNetworkDataSource(private val service: WeatherApi) : NetworkDataSource {
 
     private val key = "e44d02fff19244c3b30205216181609"
-    private val city = "Amsterdam"
 
-    override fun getWeather(): Either<Error, WeatherModel> =
+    override fun getWeather(latitude: Double, longitude: Double): Either<Error, WeatherModel> =
             Try {
-                service.loadWeather(key, city).execute()
+                val latLon = latitude.toString().plus(",").plus(longitude)
+                service.loadWeather(key, latLon).execute()
             }.fold(ifFailure = {
                 Error.ServerError.left()
             }, ifSuccess = { response ->

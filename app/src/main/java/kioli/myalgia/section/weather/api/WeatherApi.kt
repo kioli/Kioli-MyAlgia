@@ -11,5 +11,6 @@ import retrofit2.http.Query
 internal interface WeatherApi {
 
     @GET("current.json")
-    fun loadWeather(@Query("key") key: String, @Query("q") city:String): Call<WeatherModel>
+    fun loadWeather(@Query("key") key: String,
+                    @Query("q") latLon: String): Call<WeatherModel>
 }

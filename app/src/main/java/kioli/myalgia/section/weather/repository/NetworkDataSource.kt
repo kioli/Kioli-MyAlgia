@@ -10,5 +10,11 @@ import kioli.myalgia.section.weather.entity.WeatherModel
  */
 internal interface NetworkDataSource {
 
-    fun getWeather(): Either<Error, WeatherModel>
+    /**
+     * Get a new weather
+     *
+     * @param latitude latitude of the location to fetch the weather for
+     * @param longitude longitude of the location to fetch the weather for
+     */
+    fun getWeather(latitude: Double, longitude: Double): Either<Error, WeatherModel>
 }
