@@ -1,5 +1,6 @@
 package kioli.myalgia.section.weather.repository
 
+import kioli.myalgia.BuildConfig
 import kioli.myalgia.common.error.Error
 import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.functional.Try
@@ -12,12 +13,10 @@ class WeatherNotFound : Error.FeatureError()
 
 internal class WeatherNetworkDataSource(private val service: WeatherApi) : NetworkDataSource {
 
-    private val key = "e44d02fff19244c3b30205216181609"
-
     override fun getWeather(latitude: Double, longitude: Double): Either<Error, WeatherModel> =
             Try {
                 val latLon = latitude.toString().plus(",").plus(longitude)
-                service.loadWeather(key, latLon).execute()
+                service.loadWeather(BuildConfig.WEATHER_KEY, latLon).execute()
             }.fold(ifFailure = {
                 Error.ServerError.left()
             }, ifSuccess = { response ->
