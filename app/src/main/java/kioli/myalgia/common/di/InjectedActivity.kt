@@ -2,7 +2,7 @@ package kioli.myalgia.common.di
 
 import android.app.Activity
 import android.support.v7.app.AppCompatActivity
-import kioli.myalgia.App
+import kioli.myalgia.common.App
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein

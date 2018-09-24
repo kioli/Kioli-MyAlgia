@@ -6,10 +6,12 @@ object Version {
     const val androidVersionCode = 1
     const val androidVersionName = "1.0.0"
     const val gradleBuildTool = "3.1.4"
+    const val fabricTool = "1.26.0"
 
     //Libraries
     const val appCompat = "28.0.0"
     const val coroutines = "0.22.5"
+    const val fabric = "2.9.5@aar"
     const val kodein = "5.2.0"
     const val kodeinFramework = "5.0.0"
     const val kotlin = "1.2.70"
