@@ -7,11 +7,13 @@ import android.view.View
 import com.squareup.picasso.Picasso
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
+import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
 import kioli.myalgia.section.weather.di.weatherActivityModule
 import kioli.myalgia.section.weather.entity.WeatherModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.weather_content_layout.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 
@@ -56,18 +58,24 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
     }
 
     override fun showLoading() {
-        loading.visibility = View.VISIBLE
+        loading_layout.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        loading.visibility = View.GONE
+        loading_layout.visibility = View.GONE
     }
 
-    override fun returnResultWeather(weather: WeatherModel?) {
-        weather?.current?.let {
-            Picasso.get().load(it.condition.icon).into(weather_img)
-            weather_temp.text = it.temperature_c.toString()
-        }
+    override fun showWeather(weather: WeatherModel) {
+        content_layout.visibility = View.VISIBLE
+        error_layout.visibility = View.GONE
+
+        Picasso.get().load(weather.current.condition.icon).into(weather_img)
+        weather_temp.text = weather.current.temperature_c.toString()
+    }
+
+    override fun showError(error: MyError) {
+        content_layout.visibility = View.GONE
+        error_layout.visibility = View.VISIBLE
     }
 
     private fun requestWeather(forceNewWeather: Boolean) {

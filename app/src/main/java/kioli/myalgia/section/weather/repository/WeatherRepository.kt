@@ -1,7 +1,8 @@
 package kioli.myalgia.section.weather.repository
 
-import kioli.myalgia.common.error.Error
+import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
+import kioli.myalgia.common.functional.left
 import kioli.myalgia.common.functional.right
 import kioli.myalgia.common.repository.CachePolicy
 import kioli.myalgia.common.repository.CachePolicy.*
@@ -12,7 +13,7 @@ internal class WeatherRepository(
         private val localDataSource: LocalDataSource,
         private val networkDataSource: NetworkDataSource) {
 
-    fun getWeather(policy: CachePolicy, latitude: Double, longitude: Double): Either<Error, WeatherModel> {
+    fun getWeather(policy: CachePolicy, latitude: Double, longitude: Double): Either<MyError, WeatherModel> {
         return when (policy) {
             NetworkFirst -> networkDataSource.getWeather(latitude, longitude).fold(
                     {
@@ -25,18 +26,30 @@ internal class WeatherRepository(
                     })
             LocalFirst -> localDataSource.getWeather().fold(
                     {
-                        Timber.w("error loading weather from local cache: $it")
+                        Timber.w("No weather found in local cache: $it")
                         networkDataSource.getWeather(latitude, longitude).map {
                             localDataSource.saveWeather(it)
                             it
                         }
                     },
                     { it.right() })
-            LocalOnly -> localDataSource.getWeather()
-            NetworkOnly -> networkDataSource.getWeather(latitude, longitude).map {
-                localDataSource.saveWeather(it)
-                it
-            }
+            LocalOnly -> localDataSource.getWeather().fold(
+                    {
+                        Timber.e("No weather found in local cache: $it")
+                        it.left()
+                    },
+                    { it.right() }
+            )
+            NetworkOnly -> networkDataSource.getWeather(latitude, longitude).fold(
+                    {
+                        Timber.e("Error loading weather from network: $it")
+                        it.left()
+                    },
+                    {
+                        localDataSource.saveWeather(it)
+                        it.right()
+                    }
+            )
         }
     }
 }

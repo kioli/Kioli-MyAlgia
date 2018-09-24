@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyAlgia</string>
+    <string name="button_weather_fetch">Fetch weather</string>
+    <string name="text_weather_error_not_found">Weather not found</string>
 </resources>

@@ -1,6 +1,6 @@
 package kioli.myalgia.section.weather.repository
 
-import kioli.myalgia.common.error.Error
+import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
 import kioli.myalgia.section.weather.entity.WeatherModel
 
@@ -10,7 +10,7 @@ import kioli.myalgia.section.weather.entity.WeatherModel
  */
 internal interface LocalDataSource {
 
-    fun getWeather(): Either<Error, WeatherModel>
+    fun getWeather(): Either<MyError, WeatherModel>
 
     fun saveWeather(weather: WeatherModel)
 }

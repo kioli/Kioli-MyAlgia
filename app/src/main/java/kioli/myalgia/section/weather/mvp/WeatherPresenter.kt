@@ -5,7 +5,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import kioli.myalgia.common.error.Error
+import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCase
@@ -45,12 +45,12 @@ internal class WeatherPresenter(private val invoker: Invoker,
         invoker.execute(getWeather, params, ::onWeatherArrived)
     }
 
-    private fun onWeatherArrived(result: Either<Error, WeatherModel>) {
+    private fun onWeatherArrived(result: Either<MyError, WeatherModel>) {
         view?.hideLoading()
         result.fold(ifLeft = {
-            view?.returnResultWeather(null)
+            view?.showError(it)
         }, ifRight = {
-            view?.returnResultWeather(it)
+            view?.showWeather(it)
         })
     }
 }

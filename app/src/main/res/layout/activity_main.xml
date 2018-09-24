@@ -5,39 +5,30 @@
                 android:layout_height="match_parent"
                 tools:context=".section.weather.mvp.WeatherActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="weather"/>
-
-    <ImageView
-        android:id="@+id/weather_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:padding="@android:dimen/app_icon_size"/>
-
-    <TextView
-        android:id="@+id/weather_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weather_img"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:padding="@android:dimen/app_icon_size"/>
-
-    <RelativeLayout
-        android:id="@+id/loading"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dim"
-        android:visibility="gone">
+        android:orientation="vertical">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:text="@string/button_weather_fetch"/>
 
-    </RelativeLayout>
+        <include
+            android:id="@+id/content_layout"
+            layout="@layout/weather_content_layout"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/weather_error_layout"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/weather_loading_layout"
+        android:visibility="gone"/>
 </RelativeLayout>

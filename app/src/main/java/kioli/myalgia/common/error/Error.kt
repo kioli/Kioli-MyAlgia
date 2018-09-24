@@ -3,9 +3,9 @@ package kioli.myalgia.common.error
 /**
  * Domain errors will fit with one of these types.
  */
-sealed class Error {
-    object NetworkConnection : Error()
-    object ServerError : Error()
+sealed class MyError {
+    object NetworkConnection : MyError()
+    object ServerError : MyError()
 
-    abstract class FeatureError : Error()
+    abstract class FeatureError : MyError()
 }

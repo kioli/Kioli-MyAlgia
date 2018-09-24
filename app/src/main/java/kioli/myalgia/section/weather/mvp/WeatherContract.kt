@@ -1,5 +1,6 @@
 package kioli.myalgia.section.weather.mvp
 
+import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.mvp.PresenterI
 import kioli.myalgia.common.mvp.ViewI
 import kioli.myalgia.section.weather.entity.WeatherModel
@@ -8,11 +9,18 @@ internal interface WeatherContract {
 
     interface View : ViewI {
         /**
-         * Return the result of asking for a weather to the calling WeatherView
+         * Show the weather result in the calling WeatherView
          *
          * @param weather the requested weather
          */
-        fun returnResultWeather(weather: WeatherModel?)
+        fun showWeather(weather: WeatherModel)
+
+        /**
+         * Show an error result in the calling WeatherView
+         *
+         * @param error error occurred
+         */
+        fun showError(error: MyError)
 
         /**
          * Show the loading screen in the WeatherView
