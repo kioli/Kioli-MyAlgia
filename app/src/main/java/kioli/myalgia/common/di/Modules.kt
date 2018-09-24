@@ -1,14 +1,12 @@
 package kioli.myalgia.common.di
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import kioli.myalgia.BuildConfig
-import kioli.myalgia.section.weather.api.WeatherApi
 import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCaseInvoker
+import kioli.myalgia.section.weather.api.WeatherApi
 import kotlinx.coroutines.experimental.CoroutineDispatcher
 import kotlinx.coroutines.experimental.asCoroutineDispatcher
 import okhttp3.Interceptor
@@ -26,7 +24,6 @@ fun appModule(appContext: Context) = Kodein.Module {
     bind<Context>() with provider { appContext }
     bind<CoroutineDispatcher>() with provider { AsyncTask.THREAD_POOL_EXECUTOR.asCoroutineDispatcher() }
     bind<Invoker>() with singleton { UseCaseInvoker(instance()) }
-    bind<SharedPreferences>() with singleton { appContext.getSharedPreferences("weatherPreferences", MODE_PRIVATE) }
     import(httpAppModule())
 }
 

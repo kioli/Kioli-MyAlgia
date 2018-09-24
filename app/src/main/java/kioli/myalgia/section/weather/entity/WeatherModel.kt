@@ -1,8 +1,14 @@
 package kioli.myalgia.section.weather.entity
 
+import android.arch.persistence.room.Embedded
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-internal data class WeatherModel(val location: Location, val current: CurrentWeather)
+@Entity(tableName = "weatherData")
+internal data class WeatherModel(@PrimaryKey(autoGenerate = true) var id: Long?,
+                                 @Embedded val location: Location,
+                                 @Embedded val current: CurrentWeather)
 
 internal data class Location(val name: String,
                              val region: String,
@@ -17,7 +23,7 @@ internal data class CurrentWeather(val last_updated_epoch: Int,
                                    @SerializedName("temp_c") val temperature_c: Double,
                                    @SerializedName("temp_f") val temperature_f: Double,
                                    val is_day: Int,
-                                   val condition: Condition,
+                                   @Embedded val condition: Condition,
                                    val wind_mph: Double,
                                    val wind_kph: Double,
                                    val wind_degree: Int,
@@ -33,5 +39,4 @@ internal data class CurrentWeather(val last_updated_epoch: Int,
 
 internal data class Condition(val text: String,
                               val icon: String,
-                              val code: Int
-)
+                              val code: Int)

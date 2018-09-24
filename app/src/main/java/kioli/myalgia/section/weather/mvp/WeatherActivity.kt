@@ -1,12 +1,7 @@
 package kioli.myalgia.section.weather.mvp
 
 import android.Manifest
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import com.squareup.picasso.Picasso
@@ -34,7 +29,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
         setContentView(R.layout.activity_main)
         button.setOnClickListener {
             if (isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                requestLocation()
+                requestWeather(true)
                 return@setOnClickListener
             }
             requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, permissionRequestLocation)
@@ -44,6 +39,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
     override fun onResume() {
         super.onResume()
         presenter.attachView(this)
+        requestWeather(false)
     }
 
     override fun onStop() {
@@ -53,7 +49,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == permissionRequestLocation && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
-            requestLocation()
+            requestWeather(true)
             return
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -74,7 +70,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
         }
     }
 
-    private fun requestLocation() {
-        presenter.getWeather(true)
+    private fun requestWeather(forceNewWeather: Boolean) {
+        presenter.getWeather(forceNewWeather)
     }
 }

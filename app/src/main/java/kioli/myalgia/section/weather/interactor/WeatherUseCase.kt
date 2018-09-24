@@ -13,7 +13,7 @@ internal class WeatherUseCase(private val repository: WeatherRepository)
     override fun run(params: Params): Either<Error, WeatherModel> =
             when (params.forceNew) {
                 true -> repository.getWeather(CachePolicy.NetworkFirst, params.latitude, params.longitude)
-                false -> repository.getWeather(CachePolicy.LocalFirst, params.latitude, params.longitude)
+                false -> repository.getWeather(CachePolicy.LocalOnly, params.latitude, params.longitude)
             }
 
     data class Params(val forceNew: Boolean, val latitude: Double, val longitude: Double)

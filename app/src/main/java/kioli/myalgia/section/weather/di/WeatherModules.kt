@@ -1,8 +1,10 @@
 package kioli.myalgia.section.weather.di
 
+import android.arch.persistence.room.Room
 import android.content.Context
 import android.location.LocationManager
 import kioli.myalgia.common.interactor.UseCase
+import kioli.myalgia.section.weather.db.WeatherDb
 import kioli.myalgia.section.weather.entity.WeatherModel
 import kioli.myalgia.section.weather.interactor.WeatherUseCase
 import kioli.myalgia.section.weather.mvp.WeatherContract
@@ -25,4 +27,5 @@ fun weatherActivityModule() = Kodein.Module {
     }
     bind<NetworkDataSource>() with singleton { WeatherNetworkDataSource(instance()) }
     bind<LocalDataSource>() with singleton { WeatherLocalDataSource(instance()) }
+    bind<WeatherDb>() with singleton { Room.databaseBuilder(instance(), WeatherDb::class.java, "weather.db").build() }
 }

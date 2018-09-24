@@ -13,5 +13,6 @@ class App : Application(), KodeinAware {
 
     override val kodein = Kodein.lazy {
         import(appModule(applicationContext))
+
     }
 }
