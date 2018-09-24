@@ -30,8 +30,8 @@ internal interface WeatherContract {
         /**
          * Get a new weather to present to the WeatherView
          *
-         * @param forceNew true if the weather to get should be a new one, false otherwise
+         * @param forceNewWeather true if the weather to get should be a new one, false otherwise
          */
-        fun getWeather(forceNew: Boolean)
+        fun getWeather(forceNewWeather: Boolean)
     }
 }

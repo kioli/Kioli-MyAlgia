@@ -1,12 +1,12 @@
 package kioli.myalgia.section.weather.repository
 
-import android.util.Log
 import kioli.myalgia.common.error.Error
 import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.functional.right
 import kioli.myalgia.common.repository.CachePolicy
 import kioli.myalgia.common.repository.CachePolicy.*
 import kioli.myalgia.section.weather.entity.WeatherModel
+import timber.log.Timber
 
 internal class WeatherRepository(
         private val localDataSource: LocalDataSource,
@@ -16,7 +16,7 @@ internal class WeatherRepository(
         return when (policy) {
             NetworkFirst -> networkDataSource.getWeather(latitude, longitude).fold(
                     {
-                        Log.w("MyAlgia", "error loading weather from network: $it")
+                        Timber.w("error loading weather from network: $it")
                         localDataSource.getWeather()
                     },
                     {
@@ -25,7 +25,7 @@ internal class WeatherRepository(
                     })
             LocalFirst -> localDataSource.getWeather().fold(
                     {
-                        Log.w("MyAlgia", "error loading weather from local cache: $it")
+                        Timber.w("error loading weather from local cache: $it")
                         networkDataSource.getWeather(latitude, longitude).map {
                             localDataSource.saveWeather(it)
                             it

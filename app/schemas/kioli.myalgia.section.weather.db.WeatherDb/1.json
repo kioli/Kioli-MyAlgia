@@ -2,17 +2,17 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "aaac18f0b2b1722d5276ba2246bc288f",
+    "identityHash": "67ae338fa1c41ebb10271fddc1f9c521",
     "entities": [
       {
         "tableName": "weatherData",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `country` TEXT NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, `localtime_epoch` INTEGER NOT NULL, `localtime` TEXT NOT NULL, `last_updated_epoch` INTEGER NOT NULL, `last_updated` TEXT NOT NULL, `temperature_c` REAL NOT NULL, `temperature_f` REAL NOT NULL, `is_day` INTEGER NOT NULL, `wind_mph` REAL NOT NULL, `wind_kph` REAL NOT NULL, `wind_degree` INTEGER NOT NULL, `wind_direction` TEXT NOT NULL, `pressure_mb` REAL NOT NULL, `pressure_in` REAL NOT NULL, `precipitation_mm` REAL NOT NULL, `precipitation_in` REAL NOT NULL, `humidity` INTEGER NOT NULL, `cloud` INTEGER NOT NULL, `temp_feels_like_c` REAL NOT NULL, `temp_feels_like_f` REAL NOT NULL, `text` TEXT NOT NULL, `icon` TEXT NOT NULL, `code` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `country` TEXT NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, `localtime_epoch` INTEGER NOT NULL, `localtime` TEXT NOT NULL, `last_updated_epoch` INTEGER NOT NULL, `last_updated` TEXT NOT NULL, `temperature_c` REAL NOT NULL, `temperature_f` REAL NOT NULL, `is_day` INTEGER NOT NULL, `wind_mph` REAL NOT NULL, `wind_kph` REAL NOT NULL, `wind_degree` INTEGER NOT NULL, `wind_direction` TEXT NOT NULL, `pressure_mb` REAL NOT NULL, `pressure_in` REAL NOT NULL, `precipitation_mm` REAL NOT NULL, `precipitation_in` REAL NOT NULL, `humidity` INTEGER NOT NULL, `cloud` INTEGER NOT NULL, `temp_feels_like_c` REAL NOT NULL, `temp_feels_like_f` REAL NOT NULL, `text` TEXT NOT NULL, `icon` TEXT NOT NULL, `code` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "INTEGER",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "location.name",
@@ -181,7 +181,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -189,7 +189,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"aaac18f0b2b1722d5276ba2246bc288f\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"67ae338fa1c41ebb10271fddc1f9c521\")"
     ]
   }
 }

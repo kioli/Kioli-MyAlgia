@@ -44,6 +44,7 @@ dependencies {
     implementation Lib.retrofitConverter
     implementation Lib.okHttpLogger
     implementation Lib.picasso
+    implementation Lib.timber
 
     kapt Lib.roomCompiler
 

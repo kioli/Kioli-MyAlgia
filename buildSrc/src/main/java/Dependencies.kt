@@ -17,6 +17,7 @@ object Version {
     const val picasso = "2.71828"
     const val retrofit = "2.4.0"
     const val room = "1.1.1"
+    const val timber = "4.7.1"
 
     //Testing
     const val espressoRunner = "1.0.2"
@@ -38,6 +39,7 @@ object Lib {
     const val room = "android.arch.persistence.room:runtime:${Version.room}"
     const val roomCompiler = "android.arch.persistence.room:compiler:${Version.room}"
     const val supportLib = "com.android.support:appcompat-v7:${Version.appCompat}"
+    const val timber = "com.jakewharton.timber:timber:${Version.timber}"
 
     const val espresso = "com.android.support.test.espresso:espresso-core:${Version.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Version.espressoRunner}"

@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "weatherData")
-internal data class WeatherModel(@PrimaryKey(autoGenerate = true) var id: Long?,
+internal data class WeatherModel(@PrimaryKey val id: Long = 0,
                                  @Embedded val location: Location,
                                  @Embedded val current: CurrentWeather)
 
