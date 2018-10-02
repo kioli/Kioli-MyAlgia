@@ -1,8 +1,12 @@
 package kioli.myalgia.section.weather.mvp
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import com.squareup.picasso.Picasso
 import kioli.myalgia.R
@@ -10,6 +14,8 @@ import kioli.myalgia.common.di.InjectedActivity
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
+import kioli.myalgia.section.settings.SettingView
+import kioli.myalgia.section.settings.SettingsActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
 import kioli.myalgia.section.weather.entity.WeatherModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,6 +55,22 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
         presenter.detachView()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.settings, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == permissionRequestLocation && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
             requestWeather(true)
@@ -70,6 +92,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
         error_layout.visibility = View.GONE
 
         Picasso.get().load(weather.current.condition.icon).into(weather_img)
+        weather_time.text = weather.current.last_updated
         weather_temp.text = weather.current.temperature_c.toString()
     }
 

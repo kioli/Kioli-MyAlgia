@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportHeight="1500"
+        android:viewportWidth="1500">
+    <path
+        android:fillColor="@color/mood3"
+        android:pathData="M592,1375c-30,-7 -92,-32 -140,-55 -123,-61 -214,-154 -275,-281 -54,-111 -67,-169 -67,-289 0,-120 13,-178 67,-289 63,-131 153,-221 284,-284 111,-54 169,-67 289,-67 120,0 178,13 289,67 131,63 221,153 284,284 54,111 67,169 67,289 0,120 -13,178 -67,289 -36,75 -59,108 -118,166 -58,59 -91,82 -166,118 -52,25 -118,50 -147,56 -70,15 -234,13 -300,-4zM882,1321c174,-45 315,-156 392,-309 36,-71 66,-191 66,-262 0,-210 -137,-428 -328,-524 -71,-36 -191,-66 -262,-66 -210,0 -428,137 -524,328 -36,71 -66,191 -66,262 0,210 137,428 329,525 125,63 264,79 393,46z"
+        android:strokeColor="@color/mood3"/>
+    <path
+        android:fillColor="@color/mood3"
+        android:pathData="M450,986c0,-47 -6,-46 305,-46 258,0 294,2 299,16 17,45 23,44 -299,44 -257,0 -305,-2 -305,-14z"
+        android:strokeColor="@color/mood3"/>
+    <path
+        android:fillColor="@color/mood3"
+        android:pathData="M415,685c-33,-32 -34,-93 -2,-122 32,-29 56,-35 94,-22 63,20 78,108 25,149 -35,28 -87,26 -117,-5z"
+        android:strokeColor="@color/mood3"/>
+    <path
+        android:fillColor="@color/mood3"
+        android:pathData="M968,690c-53,-41 -38,-129 25,-149 61,-21 117,18 117,81 0,76 -83,115 -142,68z"
+        android:strokeColor="@color/mood3"/>
+</vector>

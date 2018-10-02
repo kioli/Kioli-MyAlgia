@@ -11,6 +11,7 @@ object Version {
     //Libraries
     const val appCompat = "28.0.0"
     const val coroutines = "0.22.5"
+    const val constraintLayout = "1.1.2"
     const val fabric = "2.9.5@aar"
     const val kodein = "5.2.0"
     const val kodeinFramework = "5.0.0"
@@ -29,6 +30,7 @@ object Version {
 }
 
 object Lib {
+    const val constraintLayout = "com.android.support.constraint:constraint-layout:${Version.constraintLayout}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutines}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
     const val kodein = "org.kodein.di:kodein-di-generic-jvm:${Version.kodein}"

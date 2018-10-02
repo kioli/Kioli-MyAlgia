@@ -34,17 +34,18 @@ android {
 }
 
 dependencies {
-    implementation Lib.kotlin
-    implementation Lib.kodein
-    implementation Lib.kodeinFramework
-    implementation Lib.room
-    implementation Lib.supportLib
+    implementation Lib.constraintLayout
     implementation Lib.coroutinesAndroid
     implementation Lib.coroutinesCore
-    implementation Lib.retrofit
-    implementation Lib.retrofitConverter
+    implementation Lib.kodein
+    implementation Lib.kodeinFramework
+    implementation Lib.kotlin
     implementation Lib.okHttpLogger
     implementation Lib.picasso
+    implementation Lib.retrofit
+    implementation Lib.retrofitConverter
+    implementation Lib.room
+    implementation Lib.supportLib
     implementation Lib.timber
     implementation("com.crashlytics.sdk.android:crashlytics:${Version.fabric}") {
         transitive = true
@@ -55,6 +56,6 @@ dependencies {
     testImplementation Lib.junit
     testImplementation Lib.roomTesting
 
-    androidTestImplementation Lib.espressoRunner
     androidTestImplementation Lib.espresso
+    androidTestImplementation Lib.espressoRunner
 }

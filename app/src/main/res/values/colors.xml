@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="dim">#AA000000</color>
+    <color name="mood1">#000000</color>
+    <color name="mood2">#000000</color>
+    <color name="mood3">#000000</color>
+    <color name="mood4">#000000</color>
+    <color name="mood5">#000000</color>
 </resources>
