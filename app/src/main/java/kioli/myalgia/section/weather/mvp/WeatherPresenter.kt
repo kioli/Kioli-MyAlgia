@@ -17,7 +17,7 @@ import kioli.myalgia.section.weather.mvp.WeatherContract.Presenter
 internal class WeatherPresenter(private val invoker: Invoker,
                                 private val getWeather: UseCase<WeatherUseCase.Params, WeatherModel>,
                                 private val locationManager: LocationManager)
-    : BasePresenter<WeatherContract.View>(), Presenter {
+    : BasePresenter<WeatherContract.View>(), WeatherContract.Presenter {
 
     private val locationListener = object : LocationListener {
 

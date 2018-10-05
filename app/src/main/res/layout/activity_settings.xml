@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".section.weather.mvp.WeatherActivity">
 
     <LinearLayout
+        android:id="@+id/preferencesContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
-
-        <kioli.myalgia.section.settings.SettingView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:option1="Celsius"
-            app:option2="Farenheit"
-            app:title="Temperature"/>
-
-    </LinearLayout>
+        android:padding="24dp"/>
 </ScrollView>

@@ -1,8 +1,8 @@
 package kioli.myalgia.section.settings
 
 import android.content.Context
-import android.util.AttributeSet
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
@@ -10,47 +10,62 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import kioli.myalgia.R
+import kioli.myalgia.common.ext.addToSharedPref
+import kioli.myalgia.common.ext.readSharedPref
+import kioli.myalgia.section.settings.entity.Preference
 
-internal class SettingView @JvmOverloads constructor(context: Context,
-                                                     attrs: AttributeSet? = null,
-                                                     defStyleAttr: Int = 0) :
-        LinearLayout(context, attrs, defStyleAttr) {
+internal class SettingView constructor(context: Context, private val preference: Preference)
+    : LinearLayout(context) {
 
     init {
-        orientation = LinearLayout.HORIZONTAL
+        orientation = LinearLayout.VERTICAL
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        val radioGroup = RadioGroup(context).apply { orientation = HORIZONTAL }
-        context.theme.obtainStyledAttributes(attrs, R.styleable.SettingView, 0, 0)
-                .apply {
-                    try {
-                        val title = getString(R.styleable.SettingView_title)?.let { makeTitle(it) }
-                        val option1 = getString(R.styleable.SettingView_option1)?.let { makeOption(it) }
-                        val option2 = getString(R.styleable.SettingView_option2)?.let { makeOption(it) }
-                        addViews(title, radioGroup, option1, option2)
-                    } finally {
-                        recycle()
-                    }
-                }
+        addTitle()
+        addOptions()
     }
 
-    private fun makeTitle(title: String): TextView = TextView(context).apply {
-        layoutParams = LayoutParams(0, WRAP_CONTENT, 1F)
-        setTextAppearance(context, R.style.SettingText)
-        setVerticalGravity(Gravity.CENTER)
-        text = title
+    private fun addTitle() {
+        val title = TextView(context).apply {
+            layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+            setTextAppearance(context, R.style.SettingText)
+            setVerticalGravity(Gravity.CENTER)
+            text = preference.title
+        }
+        addView(title)
     }
 
-    private fun makeOption(optionText: String): RadioButton = RadioButton(context).apply {
-        text = optionText
-    }
-
-    private fun addViews(title: TextView?,
-                         radioGroup: RadioGroup,
-                         option1: RadioButton?,
-                         option2: RadioButton?) {
-        title?.let { addView(it) }
+    private fun addOptions() {
+        val radioGroup = RadioGroup(context).apply {
+            orientation = HORIZONTAL
+            val emptySpace = makeEmptySpace()
+            val option1 = makeOption(preference.option1)
+            val option2 = makeOption(preference.option2)
+            addView(emptySpace)
+            addView(option1)
+            addView(option2)
+            assignPreviouslySavedValue(option1, option2)
+            setOnCheckedChangeListener { group, checkedId ->
+                context.addToSharedPref(preference.title, group.findViewById<RadioButton>(checkedId).text.toString())
+            }
+        }
         addView(radioGroup)
-        option1?.let { radioGroup.addView(it) }
-        option2?.let { radioGroup.addView(it) }
+    }
+
+    private fun makeEmptySpace() = View(context).apply {
+        layoutParams = LayoutParams(0, WRAP_CONTENT, 1F)
+    }
+
+    private fun makeOption(optionText: String) = RadioButton(context).apply {
+        layoutParams = LayoutParams(0, WRAP_CONTENT, 1F)
+        text = optionText
+        setPadding(0, 0, resources.getDimensionPixelSize(R.dimen.preference_padding), 0)
+    }
+
+    private fun assignPreviouslySavedValue(option1: RadioButton, option2: RadioButton) {
+        val selectedPref = context.readSharedPref(preference.title)
+        when (selectedPref) {
+            preference.option2 -> option2.isChecked = true
+            else -> option1.isChecked = true
+        }
     }
 }
