@@ -25,7 +25,7 @@ object Version {
     //Testing
     const val espressoRunner = "1.0.2"
     const val espresso = "3.0.2"
-    const val jUnit = "5.1.1"
+    const val jUnit = "5.3.1"
     const val mockito = "2.18.3"
 }
 

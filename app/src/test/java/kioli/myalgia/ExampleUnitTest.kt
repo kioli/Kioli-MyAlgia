@@ -1,14 +1,10 @@
 package kioli.myalgia
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.junit.jupiter.api.TestInstance
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
