@@ -5,21 +5,21 @@ object Version {
     const val androidTargetSdk = 28
     const val androidVersionCode = 1
     const val androidVersionName = "1.0.0"
-    const val gradleBuildTool = "3.1.4"
+    const val gradleBuildTool = "3.2.0"
     const val fabricTool = "1.26.0"
 
     //Libraries
     const val appCompat = "28.0.0"
-    const val coroutines = "0.22.5"
-    const val constraintLayout = "1.1.2"
+    const val coroutines = "0.30.1"
+    const val constraintLayout = "1.1.3"
     const val fabric = "2.9.5@aar"
-    const val kodein = "5.2.0"
+    const val kodein = "5.3.0"
     const val kodeinFramework = "5.0.0"
     const val kotlin = "1.2.70"
     const val okHttp = "3.10.0"
     const val picasso = "2.71828"
     const val retrofit = "2.4.0"
-    const val room = "1.1.1"
+    const val room = "1.1.1-rc1"
     const val timber = "4.7.1"
 
     //Testing

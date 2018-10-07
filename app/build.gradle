@@ -33,6 +33,13 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        failOnVersionConflict()
+        preferProjectModules()
+    }
+}
+
 dependencies {
     implementation Lib.constraintLayout
     implementation Lib.coroutinesAndroid

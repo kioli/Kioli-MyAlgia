@@ -1,4 +1,4 @@
-package kioli.myalgia.common
+package kioli.myalgia.common.component
 
 import android.content.Context
 import android.widget.CheckBox

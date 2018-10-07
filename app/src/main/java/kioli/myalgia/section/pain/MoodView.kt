@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import kioli.myalgia.R
-import kioli.myalgia.common.SquareCheckBox
+import kioli.myalgia.common.component.SquareCheckBox
 
 internal class MoodView @JvmOverloads constructor(context: Context,
                                                   attrs: AttributeSet? = null,

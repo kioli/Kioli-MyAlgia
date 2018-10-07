@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import com.squareup.picasso.Picasso
@@ -14,7 +13,6 @@ import kioli.myalgia.common.di.InjectedActivity
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
-import kioli.myalgia.section.settings.SettingView
 import kioli.myalgia.section.settings.SettingsActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
 import kioli.myalgia.section.weather.entity.WeatherModel
