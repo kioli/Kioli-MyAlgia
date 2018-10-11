@@ -2,13 +2,13 @@ package kioli.myalgia.common
 
 import android.app.Application
 import android.support.annotation.VisibleForTesting
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
+import kioli.myalgia.BuildConfig
 import kioli.myalgia.common.di.appModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import timber.log.Timber
-import com.crashlytics.android.Crashlytics
-import io.fabric.sdk.android.Fabric
-import kioli.myalgia.BuildConfig
 
 class App : Application(), KodeinAware {
 

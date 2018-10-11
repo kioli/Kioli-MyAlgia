@@ -15,7 +15,7 @@ import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
 import kioli.myalgia.section.settings.SettingsActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
-import kioli.myalgia.section.weather.entity.WeatherModel
+import kioli.myalgia.section.weather.entity.WeatherUiModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.weather_content_layout.*
 import org.kodein.di.Kodein
@@ -85,13 +85,12 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
         loading_layout.visibility = View.GONE
     }
 
-    override fun showWeather(weather: WeatherModel) {
+    override fun showWeather(weather: WeatherUiModel) {
         content_layout.visibility = View.VISIBLE
         error_layout.visibility = View.GONE
-
-        Picasso.get().load(weather.current.condition.icon).into(weather_img)
-        weather_time.text = weather.current.last_updated
-        weather_temp.text = weather.current.temperature_c.toString()
+        Picasso.get().load(weather.icon).into(weather_img)
+        weather_location.text = weather.location
+        weather_temp.text = weather.temperature.toString()
     }
 
     override fun showError(error: MyError) {

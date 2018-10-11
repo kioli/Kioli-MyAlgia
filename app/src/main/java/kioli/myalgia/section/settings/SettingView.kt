@@ -10,8 +10,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import kioli.myalgia.R
-import kioli.myalgia.common.ext.readSettingFromSharedPref
-import kioli.myalgia.common.ext.storeSettingToSharedPref
+import kioli.myalgia.common.ext.readSettingOptionFromSharedPref
+import kioli.myalgia.common.ext.storeSettingOptionToSharedPref
 import kioli.myalgia.section.settings.entity.Setting
 
 @SuppressLint("ViewConstructor")
@@ -47,8 +47,8 @@ internal class SettingView constructor(context: Context, setting: Setting)
             }
             setOnCheckedChangeListener { group, checkedId ->
                 setting.options
-                        .firstOrNull { it == group.findViewById<RadioButton>(checkedId).text }
-                        ?.let { context.storeSettingToSharedPref(setting, it) }
+                        .firstOrNull { it.title == group.findViewById<RadioButton>(checkedId).text }
+                        ?.let { context.storeSettingOptionToSharedPref(setting, it) }
             }
         }
         assignPreviouslySavedValue(setting)
@@ -62,7 +62,7 @@ internal class SettingView constructor(context: Context, setting: Setting)
     }
 
     private fun assignPreviouslySavedValue(setting: Setting) {
-        val selectedOption = context.readSettingFromSharedPref(setting)
+        val selectedOption = context.readSettingOptionFromSharedPref(setting)
         (0 until radioGroup.childCount).forEach {
             val radioButton = radioGroup.getChildAt(it) as RadioButton
             if (radioButton.text == selectedOption.title) {

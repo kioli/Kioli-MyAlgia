@@ -23,15 +23,9 @@ android {
     buildTypes {
         def WEATHER_KEY = "WEATHER_KEY"
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", WEATHER_KEY, '"e44d02fff19244c3b30205216181609"'
         }
         debug {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", WEATHER_KEY, '"e44d02fff19244c3b30205216181609"'
         }
     }

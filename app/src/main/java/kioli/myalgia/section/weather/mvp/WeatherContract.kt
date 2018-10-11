@@ -3,7 +3,7 @@ package kioli.myalgia.section.weather.mvp
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.mvp.PresenterI
 import kioli.myalgia.common.mvp.ViewI
-import kioli.myalgia.section.weather.entity.WeatherModel
+import kioli.myalgia.section.weather.entity.WeatherUiModel
 
 internal interface WeatherContract {
 
@@ -13,7 +13,7 @@ internal interface WeatherContract {
          *
          * @param weather the requested weather
          */
-        fun showWeather(weather: WeatherModel)
+        fun showWeather(weather: WeatherUiModel)
 
         /**
          * Show an error result in the calling WeatherView
