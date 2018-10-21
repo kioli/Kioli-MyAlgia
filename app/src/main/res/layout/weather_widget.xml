@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/weather_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="@android:dimen/app_icon_size"/>
+
+        <TextView
+            android:id="@+id/weather_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/weather_text"
+            app:layout_constraintBottom_toTopOf="@+id/weather_temp"
+            app:layout_constraintStart_toEndOf="@+id/weather_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="sample text location"/>
+
+        <TextView
+            android:id="@+id/weather_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/weather_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/weather_img"
+            app:layout_constraintTop_toBottomOf="@+id/weather_location"
+            tools:text="sample text temperature"/>
+    </android.support.constraint.ConstraintLayout>
+</merge>

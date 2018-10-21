@@ -17,7 +17,7 @@ import kioli.myalgia.section.settings.SettingsActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
 import kioli.myalgia.section.weather.entity.WeatherUiModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.weather_content_layout.*
+import kotlinx.android.synthetic.main.weather_widget.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 
