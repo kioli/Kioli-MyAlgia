@@ -1,13 +1,20 @@
 package kioli.myalgia.main
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import kioli.myalgia.R
+import kioli.myalgia.common.di.InjectedActivity
+import kioli.myalgia.section.settings.SettingsActivity
+import kioli.myalgia.section.weather.mvp.WeatherContract
 import kotlinx.android.synthetic.main.view_main.*
 
-class MainActivity : AppCompatActivity() {
+internal class MainActivity : InjectedActivity() {
 
     private val sectionsAdapter: SectionsAdapter by lazy { SectionsAdapter() }
 
@@ -41,5 +48,33 @@ class MainActivity : AppCompatActivity() {
         pager.adapter = sectionsAdapter
         pager.addOnPageChangeListener(pageChangeListener)
         navigation.setOnNavigationItemSelectedListener(navigationListener)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.settings, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == permissionRequestLocation && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+            (pager.findViewWithTag<View>(Section.HOME.tag) as WeatherContract.View).requestWeather(true)
+            return
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    internal companion object {
+        internal const val permissionRequestLocation = 12345
     }
 }

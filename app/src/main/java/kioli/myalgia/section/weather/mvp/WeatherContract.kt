@@ -31,6 +31,11 @@ internal interface WeatherContract {
          * Hide the loading screen in the WeatherView
          */
         fun hideLoading()
+
+        /**
+         * Request weather after granting permissions
+         */
+        fun requestWeather(forceNewWeather: Boolean)
     }
 
     interface Presenter : PresenterI<View> {

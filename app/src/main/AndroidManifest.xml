@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".section.settings.SettingsActivity"/>
-        <activity android:name=".section.weather.mvp.WeatherActivity"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"

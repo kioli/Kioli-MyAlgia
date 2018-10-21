@@ -1,8 +1,6 @@
 package kioli.myalgia.main
 
-import kioli.myalgia.R
-
-enum class Section(val layoutId: Int) {
-    HOME(R.layout.view_home),
-    HISTORY(R.layout.view_history)
+enum class Section(val tag: String) {
+    HOME("Home"),
+    HISTORY("History")
 }
