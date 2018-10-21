@@ -56,6 +56,7 @@ dependencies {
     implementation Lib.retrofit
     implementation Lib.retrofitConverter
     implementation Lib.room
+    implementation Lib.supportDesign
     implementation Lib.supportLib
     implementation Lib.timber
     implementation("com.crashlytics.sdk.android:crashlytics:${Version.fabric}") {

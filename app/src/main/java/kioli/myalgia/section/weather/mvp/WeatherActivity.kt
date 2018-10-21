@@ -16,7 +16,7 @@ import kioli.myalgia.common.ext.requestPermission
 import kioli.myalgia.section.settings.SettingsActivity
 import kioli.myalgia.section.weather.di.weatherActivityModule
 import kioli.myalgia.section.weather.entity.WeatherUiModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.view_home.*
 import kotlinx.android.synthetic.main.weather_widget.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
@@ -32,7 +32,7 @@ internal class WeatherActivity : InjectedActivity(), WeatherContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.view_home)
         button.setOnClickListener {
             if (isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 requestWeather(true)

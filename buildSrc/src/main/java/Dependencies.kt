@@ -42,6 +42,7 @@ object Lib {
     const val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
     const val room = "android.arch.persistence.room:runtime:${Version.room}"
     const val roomCompiler = "android.arch.persistence.room:compiler:${Version.room}"
+    const val supportDesign = "com.android.support:design:${Version.appCompat}"
     const val supportLib = "com.android.support:appcompat-v7:${Version.appCompat}"
     const val timber = "com.jakewharton.timber:timber:${Version.timber}"
 
