@@ -7,8 +7,8 @@ import kioli.myalgia.BuildConfig
 import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCaseInvoker
 import kioli.myalgia.section.weather.api.WeatherApi
-import kotlinx.coroutines.experimental.CoroutineDispatcher
-import kotlinx.coroutines.experimental.asCoroutineDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.asCoroutineDispatcher
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

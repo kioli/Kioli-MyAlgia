@@ -31,12 +31,6 @@ android {
     }
 }
 
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
-
 configurations.all {
     resolutionStrategy {
         failOnVersionConflict()

@@ -15,7 +15,7 @@ object Version {
     const val fabric = "2.9.5@aar"
     const val kodein = "5.3.0"
     const val kodeinFramework = "5.0.0"
-    const val kotlin = "1.2.70"
+    const val kotlin = "1.3.0"
     const val okHttp = "3.10.0"
     const val picasso = "2.71828"
     const val retrofit = "2.4.0"
