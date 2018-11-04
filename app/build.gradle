@@ -61,6 +61,7 @@ dependencies {
 
     testImplementation Lib.junit
     testImplementation Lib.roomTesting
+    testImplementation Lib.mockk
 
     androidTestImplementation Lib.espresso
     androidTestImplementation Lib.espressoRunner

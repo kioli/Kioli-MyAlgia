@@ -3,7 +3,6 @@ package kioli.myalgia.common.interactor
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
 import kotlinx.coroutines.*
-import kotlinx.coroutines.android.UI
 
 class UseCaseInvoker(private val dispatcher: CoroutineDispatcher) : Invoker {
 
@@ -11,6 +10,6 @@ class UseCaseInvoker(private val dispatcher: CoroutineDispatcher) : Invoker {
                                               params: Params,
                                               onResult: (Either<MyError, Type>) -> Unit) {
         val job = GlobalScope.async(dispatcher, CoroutineStart.DEFAULT, { useCase.run(params) })
-        GlobalScope.launch(Dispatchers.Main, CoroutineStart.DEFAULT, { onResult.invoke(job.await()) })
+        GlobalScope.launch(Dispatchers.Main, CoroutineStart.DEFAULT) { onResult.invoke(job.await()) }
     }
 }

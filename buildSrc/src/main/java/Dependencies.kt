@@ -5,12 +5,12 @@ object Version {
     const val androidTargetSdk = 28
     const val androidVersionCode = 1
     const val androidVersionName = "1.0.0"
-    const val gradleBuildTool = "3.2.0"
+    const val gradleBuildTool = "3.2.1"
     const val fabricTool = "1.26.1"
 
     //Libraries
     const val appCompat = "28.0.0"
-    const val coroutines = "0.30.1"
+    const val coroutines = "1.0.0-RC1"
     const val constraintLayout = "1.1.3"
     const val fabric = "2.9.5@aar"
     const val kodein = "5.3.0"
@@ -26,6 +26,7 @@ object Version {
     const val espressoRunner = "1.0.2"
     const val espresso = "3.0.2"
     const val jUnit = "5.3.1"
+    const val mockk = "1.8.11"
     const val mockito = "2.18.3"
 }
 
@@ -49,8 +50,7 @@ object Lib {
     const val espresso = "com.android.support.test.espresso:espresso-core:${Version.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Version.espressoRunner}"
     const val junit = "org.junit.jupiter:junit-jupiter-api:${Version.jUnit}"
-    const val mockitoAndroidTest = "org.mockito:mockito-android:${Version.mockito}"
-    const val mockitoUnitTest = "org.mockito:mockito-core:${Version.mockito}"
+    const val mockk = "io.mockk:mockk:${Version.mockk}"
     const val roomTesting = "android.arch.persistence.room:testing:${Version.room}"
 
     const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"

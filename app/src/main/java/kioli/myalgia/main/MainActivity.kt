@@ -19,9 +19,9 @@ internal class MainActivity : InjectedActivity() {
     private val sectionsAdapter: SectionsAdapter by lazy { SectionsAdapter() }
 
     private val pageChangeListener = object : ViewPager.OnPageChangeListener {
-        override fun onPageScrollStateChanged(state: Int) {}
+        override fun onPageScrollStateChanged(state: Int) = Unit
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) = Unit
 
         override fun onPageSelected(position: Int) {
             navigation.selectedItemId = navigation.menu.getItem(position).itemId
