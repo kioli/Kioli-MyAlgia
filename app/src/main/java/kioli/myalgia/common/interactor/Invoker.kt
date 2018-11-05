@@ -1,7 +1,7 @@
 package kioli.myalgia.common.interactor
 
-import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.error.MyError
+import kioli.myalgia.common.functional.Either
 
 interface Invoker {
 

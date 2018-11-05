@@ -1,7 +1,8 @@
 package kioli.myalgia.common.ext
 
 import android.content.Context
-import kioli.myalgia.section.settings.entity.*
+import kioli.myalgia.section.settings.entity.Option
+import kioli.myalgia.section.settings.entity.Setting
 
 const val sharedPreferences = "myalgia sp"
 

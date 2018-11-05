@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".section.settings.SettingsActivity"/>
+        <activity android:name="kioli.myalgia.section.settings.SettingsActivity"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"

@@ -10,8 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
+import kioli.myalgia.element.weather.mvp.WeatherContract
 import kioli.myalgia.section.settings.SettingsActivity
-import kioli.myalgia.section.weather.mvp.WeatherContract
 import kotlinx.android.synthetic.main.view_main.*
 
 internal class MainActivity : InjectedActivity() {
