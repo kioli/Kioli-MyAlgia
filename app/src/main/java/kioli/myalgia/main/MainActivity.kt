@@ -13,6 +13,7 @@ import kioli.myalgia.common.di.InjectedActivity
 import kioli.myalgia.element.weather.mvp.WeatherContract
 import kioli.myalgia.section.settings.SettingsActivity
 import kotlinx.android.synthetic.main.view_main.*
+import android.support.v7.app.AppCompatDelegate
 
 internal class MainActivity : InjectedActivity() {
 

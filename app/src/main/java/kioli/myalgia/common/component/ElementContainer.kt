@@ -23,7 +23,6 @@ abstract class ElementContainer @JvmOverloads constructor(context: Context,
             setPadding(padding, 0, 0, padding)
             visibility = View.GONE
             setTextColor(ContextCompat.getColor(context, R.color.element_title))
-            textSize = resources.getDimension(R.dimen.element_title_size)
         }
     }
 

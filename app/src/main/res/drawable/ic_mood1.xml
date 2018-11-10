@@ -4,23 +4,23 @@
         android:viewportHeight="1500"
         android:viewportWidth="1500">
     <path
-        android:fillColor="@color/mood1"
+        android:fillColor="@color/mood"
         android:pathData="M602,1365c-30,-7 -92,-32 -140,-55 -123,-61 -214,-154 -275,-281 -54,-111 -67,-169 -67,-289 0,-120 13,-178 67,-289 63,-131 153,-221 284,-284 111,-54 169,-67 289,-67 120,0 178,13 289,67 131,63 221,153 284,284 54,111 67,169 67,289 0,120 -13,178 -67,289 -36,75 -59,108 -118,166 -58,59 -91,82 -166,118 -52,25 -118,50 -147,56 -70,15 -234,13 -300,-4zM892,1311c174,-45 315,-156 392,-309 36,-71 66,-191 66,-262 0,-210 -137,-428 -328,-524 -71,-36 -191,-66 -262,-66 -210,0 -428,137 -524,328 -36,71 -66,191 -66,262 0,210 137,428 329,525 125,63 264,79 393,46z"
-        android:strokeColor="@color/mood1"/>
+        android:strokeColor="@color/mood"/>
     <path
-        android:fillColor="@color/mood1"
+        android:fillColor="@color/mood"
         android:pathData="M433,1033c-25,-9 -12,-41 30,-75 89,-74 187,-108 307,-108 130,0 238,39 325,119 39,35 42,43 20,61 -16,13 -20,11 -85,-39 -126,-96 -290,-113 -438,-46 -31,14 -66,34 -77,44 -32,30 -69,49 -82,44z"
-        android:strokeColor="@color/mood1"/>
+        android:strokeColor="@color/mood"/>
     <path
-        android:fillColor="@color/mood1"
+        android:fillColor="@color/mood"
         android:pathData="M634,1011c-2,-2 -4,-12 -4,-22 0,-25 37,-34 130,-34 100,0 132,9 128,37 -3,21 -8,22 -126,22 -68,1 -126,-1 -128,-3z"
-        android:strokeColor="@color/mood1"/>
+        android:strokeColor="@color/mood"/>
     <path
-        android:fillColor="@color/mood1"
+        android:fillColor="@color/mood"
         android:pathData="M465,812c-11,-2 -30,-13 -42,-25 -28,-25 -31,-81 -7,-115 15,-22 15,-25 -6,-47 -24,-26 -21,-55 5,-55 9,0 33,14 54,30 50,40 94,52 169,44 61,-6 62,-6 62,19 0,30 -16,37 -81,37 -32,0 -48,4 -44,10 11,18 -14,76 -38,88 -33,15 -50,19 -72,14z"
-        android:strokeColor="@color/mood1"/>
+        android:strokeColor="@color/mood"/>
     <path
-        android:fillColor="@color/mood1"
+        android:fillColor="@color/mood"
         android:pathData="M993,803c-32,-15 -61,-71 -48,-93 4,-6 -12,-10 -44,-10 -65,0 -81,-7 -81,-37 0,-25 1,-25 63,-19 74,8 118,-4 168,-44 21,-16 45,-30 54,-30 26,0 29,29 5,55 -21,22 -21,25 -6,47 54,77 -26,173 -111,131z"
-        android:strokeColor="@color/mood1"/>
+        android:strokeColor="@color/mood"/>
 </vector>
