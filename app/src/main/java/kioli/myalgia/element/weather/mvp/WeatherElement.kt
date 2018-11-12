@@ -48,6 +48,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
     }
 
     override fun showLoading() {
+        weather_error.visibility = View.GONE
         weather_loading.visibility = View.VISIBLE
     }
 
@@ -62,7 +63,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
     }
 
     override fun showError(error: MyError) {
-        // DO something
+        weather_error.visibility = View.VISIBLE
     }
 
     override fun requestWeather(forceNewWeather: Boolean) {

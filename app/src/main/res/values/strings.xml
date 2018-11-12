@@ -4,6 +4,6 @@
     <string name="title_home">Home</string>
     <string name="title_history">History</string>
 
-    <string name="button_weather_fetch">Fetch weather</string>
-    <string name="text_weather_error_not_found">Weather not found</string>
+    <string name="weather_button">Fetch weather</string>
+    <string name="weather_error">Weather error</string>
 </resources>

@@ -28,18 +28,18 @@ internal class WeatherPresenter(private val invoker: Invoker,
             invoker.execute(getWeather, params, ::onWeatherArrived)
         }
 
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) = Unit
 
-        override fun onProviderEnabled(provider: String) {}
+        override fun onProviderEnabled(provider: String) = Unit
 
-        override fun onProviderDisabled(provider: String) {}
+        override fun onProviderDisabled(provider: String) = Unit
     }
 
     @SuppressLint("MissingPermission")
     override fun getWeather(forceNewWeather: Boolean) {
         view?.showLoading()
         if (forceNewWeather) {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, locationListener)
             return
         }
         val params = WeatherUseCase.Params(false, 0.0, 0.0)
