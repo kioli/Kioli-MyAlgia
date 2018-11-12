@@ -27,6 +27,7 @@ abstract class ElementContainer @JvmOverloads constructor(context: Context,
     }
 
     init {
+        layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         orientation = LinearLayout.VERTICAL
         gravity = Gravity.CENTER_VERTICAL
         background = ContextCompat.getDrawable(context, android.R.drawable.dialog_holo_light_frame)

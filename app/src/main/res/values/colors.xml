@@ -7,5 +7,6 @@
     <color name="element_title">#595959</color>
     <color name="dim">#55000000</color>
     <color name="error_bg">#55FF0000</color>
+    <color name="delete">#DDFF0000</color>
     <color name="mood">#000000</color>
 </resources>
