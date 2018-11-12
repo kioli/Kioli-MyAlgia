@@ -20,7 +20,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-fun weatherActivityModule() = Kodein.Module {
+fun weatherActivityModule() = Kodein.Module("module weather", false) {
     bind<WeatherContract.Presenter>() with provider { WeatherPresenter(instance(), instance(), instance(), instance()) }
     bind<WeatherRepository>() with provider { WeatherRepository(instance(), instance()) }
     bind<UseCase<WeatherUseCase.Params, WeatherModel>>() with provider { WeatherUseCase(instance()) }

@@ -21,7 +21,7 @@ abstract class InjectedActivity : AppCompatActivity(), KodeinAware {
         (app().overrideBindings)()
     }
 
-    open fun activityModule() = Kodein.Module {}
+    open fun activityModule() = Kodein.Module("module generic injected activity", false) {}
 }
 
 fun Activity.app() = applicationContext as App

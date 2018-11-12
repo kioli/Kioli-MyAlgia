@@ -17,9 +17,9 @@ open class InjectedContainer @JvmOverloads constructor(context: Context,
 
     override val kodein = Kodein.lazy {
         extend(layoutKodein)
-        import(viewModule())
+        import(elementModule())
     }
 
-    open fun viewModule() = Kodein.Module {}
+    open fun elementModule() = Kodein.Module("module generic element", false) {}
 
 }

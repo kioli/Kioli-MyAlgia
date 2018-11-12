@@ -32,7 +32,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
         }
     }
 
-    override fun viewModule() = Kodein.Module {
+    override fun elementModule() = Kodein.Module("module weather element", false) {
         import(weatherActivityModule())
     }
 

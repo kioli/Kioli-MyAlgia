@@ -20,14 +20,14 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-fun appModule(appContext: Context) = Kodein.Module {
+fun appModule(appContext: Context) = Kodein.Module("module app", false) {
     bind<Context>() with provider { appContext }
     bind<CoroutineDispatcher>() with provider { AsyncTask.THREAD_POOL_EXECUTOR.asCoroutineDispatcher() }
     bind<Invoker>() with singleton { UseCaseInvoker(instance()) }
-    import(httpAppModule())
+    import(httpModule())
 }
 
-fun httpAppModule() = Kodein.Module {
+fun httpModule() = Kodein.Module("module http", false) {
     bind<Interceptor>() with singleton {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
@@ -48,6 +48,6 @@ fun httpAppModule() = Kodein.Module {
     }
 }
 
-fun injectedActivityModule(activity: AppCompatActivity) = Kodein.Module {
+fun injectedActivityModule(activity: AppCompatActivity) = Kodein.Module("module injected activity", false) {
     bind<Context>(overrides = true) with provider { activity }
 }
