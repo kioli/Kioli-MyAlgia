@@ -3,7 +3,7 @@ package kioli.myalgia.main
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
-import kioli.myalgia.section.history.HistoryView
+import kioli.myalgia.section.history.mvp.HistoryView
 import kioli.myalgia.section.home.HomeView
 
 internal class SectionsAdapter : PagerAdapter() {

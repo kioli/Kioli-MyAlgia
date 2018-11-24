@@ -9,9 +9,7 @@ import kioli.myalgia.common.functional.right
 import kioli.myalgia.element.weather.api.WeatherApi
 import kioli.myalgia.element.weather.entity.WeatherModel
 
-class WeatherNotFound : MyError.FeatureError()
-
-internal class WeatherNetworkDataSource(private val service: WeatherApi) : NetworkDataSource {
+internal class WeatherNetworkDataSource(private val service: WeatherApi) : SourceWeatherNetwork {
 
     override fun getWeather(latitude: Double, longitude: Double): Either<MyError, WeatherModel> =
             Try {
@@ -26,6 +24,6 @@ internal class WeatherNetworkDataSource(private val service: WeatherApi) : Netwo
                                 current = it.current.copy(condition = it.current.condition.copy(icon = "http:" + it.current.condition.icon)))
                     }
                     body.right()
-                } else WeatherNotFound().left()
+                } else WeatherError().left()
             })
 }

@@ -61,7 +61,7 @@
         android:id="@+id/weather_error"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/error_bg"
+        android:background="@color/bg_error"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

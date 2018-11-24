@@ -11,7 +11,6 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import kioli.myalgia.R
 import kioli.myalgia.element.Element
-import kioli.myalgia.main.SwipeToDelete
 
 class HomeView @JvmOverloads constructor(context: Context,
                                          attrs: AttributeSet? = null,

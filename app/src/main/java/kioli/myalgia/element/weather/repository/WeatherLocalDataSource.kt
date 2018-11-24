@@ -7,13 +7,13 @@ import kioli.myalgia.common.functional.right
 import kioli.myalgia.element.weather.db.WeatherDb
 import kioli.myalgia.element.weather.entity.WeatherModel
 
-internal class WeatherLocalDataSource(private val db: WeatherDb) : LocalDataSource {
+internal class WeatherLocalDataSource(private val db: WeatherDb) : SourceWeatherLocal {
 
     override fun getWeather(): Either<MyError, WeatherModel> {
         if (db.weatherModelDao().getAll().isNotEmpty()) {
             return db.weatherModelDao().getAll().first().right()
         }
-        return WeatherNotFound().left()
+        return WeatherError().left()
     }
 
     override fun saveWeather(weather: WeatherModel) {

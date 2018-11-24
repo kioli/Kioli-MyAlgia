@@ -8,7 +8,7 @@ import kioli.myalgia.element.weather.entity.WeatherModel
  * The data source contracts are part of the domain layer.
  * Their implementations belong to the data layer.
  */
-internal interface LocalDataSource {
+internal interface SourceWeatherLocal {
 
     fun getWeather(): Either<MyError, WeatherModel>
 

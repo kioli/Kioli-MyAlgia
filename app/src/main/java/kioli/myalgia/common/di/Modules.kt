@@ -4,9 +4,12 @@ import android.content.Context
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import kioli.myalgia.BuildConfig
+import kioli.myalgia.common.ext.readSettingOptionFromSharedPref
 import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCaseInvoker
 import kioli.myalgia.element.weather.api.WeatherApi
+import kioli.myalgia.section.settings.entity.Option
+import kioli.myalgia.section.settings.entity.Setting
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asCoroutineDispatcher
 import okhttp3.Interceptor
@@ -50,4 +53,8 @@ fun httpModule() = Kodein.Module("module http", false) {
 
 fun injectedActivityModule(activity: AppCompatActivity) = Kodein.Module("module injected activity", false) {
     bind<Context>(overrides = true) with provider { activity }
+    bind<List<Option>>() with provider {
+        val context = instance() as Context
+        Setting.values().map { context.readSettingOptionFromSharedPref(it) }
+    }
 }

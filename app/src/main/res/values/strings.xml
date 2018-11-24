@@ -7,6 +7,8 @@
     <string name="weather_button">Fetch weather</string>
     <string name="weather_error">Weather error</string>
 
+    <string name="history_empty">Empty history</string>
+
     <string name="event_addition">Add %1$s</string>
     <string name="event_name_social">Social event</string>
 

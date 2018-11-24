@@ -1,4 +1,4 @@
-package kioli.myalgia.main
+package kioli.myalgia.section.home
 
 import android.content.Context
 import android.graphics.Canvas

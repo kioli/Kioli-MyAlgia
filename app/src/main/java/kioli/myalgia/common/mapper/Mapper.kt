@@ -1,4 +1,4 @@
-package kioli.myalgia.element.weather.mapper
+package kioli.myalgia.common.mapper
 
 /**
  * Interface for model mappers.

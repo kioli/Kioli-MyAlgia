@@ -10,7 +10,7 @@ object Version {
 
     //Libraries
     const val appCompat = "28.0.0"
-    const val coroutines = "1.0.0-RC1"
+    const val coroutines = "1.0.1"
     const val constraintLayout = "1.1.3"
     const val fabric = "2.9.5@aar"
     const val kodein = "5.3.0"
@@ -19,7 +19,7 @@ object Version {
     const val okHttp = "3.10.0"
     const val picasso = "2.71828"
     const val retrofit = "2.4.0"
-    const val room = "1.1.1-rc1"
+    const val room = "1.1.1"
     const val timber = "4.7.1"
 
     //Testing

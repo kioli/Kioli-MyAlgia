@@ -10,8 +10,8 @@ import kioli.myalgia.element.weather.entity.WeatherModel
 import timber.log.Timber
 
 internal class WeatherRepository(
-        private val localDataSource: LocalDataSource,
-        private val networkDataSource: NetworkDataSource) {
+        private val localDataSource: SourceWeatherLocal,
+        private val networkDataSource: SourceWeatherNetwork) {
 
     fun getWeather(policy: CachePolicy, latitude: Double, longitude: Double): Either<MyError, WeatherModel> {
         return when (policy) {

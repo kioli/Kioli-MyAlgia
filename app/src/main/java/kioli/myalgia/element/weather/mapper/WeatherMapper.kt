@@ -1,5 +1,6 @@
 package kioli.myalgia.element.weather.mapper
 
+import kioli.myalgia.common.mapper.Mapper
 import kioli.myalgia.element.weather.entity.WeatherModel
 import kioli.myalgia.element.weather.entity.WeatherUiModel
 import kioli.myalgia.section.settings.entity.*
