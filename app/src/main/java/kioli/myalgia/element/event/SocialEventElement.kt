@@ -13,6 +13,7 @@ class SocialEventElement @JvmOverloads constructor(context: Context,
 
     init {
         setTitle(resources.getString(R.string.event_name_social))
-        View.inflate(context, R.layout.view_event, this)
+        val view = inflate(context, R.layout.view_event, null)
+        addView(view)
     }
 }

@@ -5,9 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
-import android.widget.RelativeLayout
 import kioli.myalgia.R
-import kioli.myalgia.common.component.LoadingView
 import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.weather.mvp.HistoryContract
 import kioli.myalgia.section.history.di.historyViewModules

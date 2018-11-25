@@ -22,7 +22,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
     private val presenter by instance<WeatherContract.Presenter>()
 
     init {
-        val view = View.inflate(context, R.layout.view_weather, this)
+        val view = View.inflate(context, R.layout.view_weather, null)
         view.setOnClickListener {
             if ((context as AppCompatActivity).isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 requestWeather(true)
@@ -30,6 +30,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
             }
             context.requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, permissionRequestLocation)
         }
+        addView(view)
     }
 
     override fun elementModule() = Kodein.Module("module weather element", false) {

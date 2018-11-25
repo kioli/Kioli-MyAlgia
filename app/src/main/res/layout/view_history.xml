@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<merge
     android:id="@+id/weather_container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/history_list"
@@ -40,4 +38,4 @@
             android:textSize="24sp"/>
     </RelativeLayout>
 
-</RelativeLayout>
+</merge>
