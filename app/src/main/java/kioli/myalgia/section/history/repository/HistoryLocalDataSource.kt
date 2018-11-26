@@ -4,19 +4,19 @@ import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.functional.left
 import kioli.myalgia.common.functional.right
-import kioli.myalgia.section.history.db.HistoryDb
-import kioli.myalgia.section.history.entity.HistoryItemModel
+import kioli.myalgia.section.main.state.db.StateDb
+import kioli.myalgia.section.main.state.entity.StateModel
 
-internal class HistoryLocalDataSource(private val db: HistoryDb) : SourceHistoryLocal {
+internal class HistoryLocalDataSource(private val db: StateDb) : SourceStateLocal {
 
-    override fun getHistoryItems(): Either<MyError, List<HistoryItemModel>> {
-        if (db.historyModelDao().getAll().isNotEmpty()) {
-            return db.historyModelDao().getAll().right()
+    override fun getStateItems(): Either<MyError, List<StateModel>> {
+        if (db.stateDao().getAll().isNotEmpty()) {
+            return db.stateDao().getAll().right()
         }
-        return HistoryError().left()
+        return HistoryErrorSaving().left()
     }
 
-    override fun saveHistoryItem(historyItemModel: HistoryItemModel) {
-        db.historyModelDao().insert(historyItemModel)
+    override fun saveState(stateModel: StateModel) {
+        db.stateDao().insert(stateModel)
     }
 }

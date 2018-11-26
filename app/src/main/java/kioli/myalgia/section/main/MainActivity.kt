@@ -1,4 +1,4 @@
-package kioli.myalgia.main
+package kioli.myalgia.section.main
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -7,16 +7,25 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
+import kioli.myalgia.element.Element
 import kioli.myalgia.element.weather.mvp.WeatherContract
+import kioli.myalgia.section.history.mvp.HistoryView
+import kioli.myalgia.section.home.HomeView
+import kioli.myalgia.section.main.state.manager.IStateManager
 import kioli.myalgia.section.settings.SettingsActivity
 import kotlinx.android.synthetic.main.view_main.*
+import org.kodein.di.generic.instance
 
 internal class MainActivity : InjectedActivity() {
 
-    private val sectionsAdapter: SectionsAdapter by lazy { SectionsAdapter() }
+    private val stateManager by instance<IStateManager>()
+
+    private val sectionsAdapter: SectionsAdapter by lazy { SectionsAdapter(homeView, historyView) }
+
+    private val homeView by lazy { HomeView(this) }
+    private val historyView by lazy { HistoryView(baseContext) }
 
     private val pageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) = Unit
@@ -62,13 +71,18 @@ internal class MainActivity : InjectedActivity() {
                 startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
+            R.id.save -> {
+                stateManager.storeState()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == permissionRequestLocation && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
-            (pager.findViewWithTag<View>(Section.HOME.tag) as WeatherContract.View).requestWeather(true)
+            val weatherElement = homeView.elements.firstOrNull { it.name == Element.WEATHER.name }
+            weatherElement?.let { (it as WeatherContract.View).requestWeather(true) }
             return
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

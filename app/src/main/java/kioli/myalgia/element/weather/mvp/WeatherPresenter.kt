@@ -10,6 +10,7 @@ import kioli.myalgia.common.functional.Either
 import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCase
 import kioli.myalgia.common.mvp.BasePresenter
+import kioli.myalgia.section.main.state.manager.IStateManager
 import kioli.myalgia.element.weather.entity.WeatherModel
 import kioli.myalgia.element.weather.interactor.WeatherUseCase
 import kioli.myalgia.element.weather.mapper.WeatherMapper
@@ -17,7 +18,8 @@ import kioli.myalgia.element.weather.mapper.WeatherMapper
 internal class WeatherPresenter(private val invoker: Invoker,
                                 private val mapper: WeatherMapper,
                                 private val getWeather: UseCase<WeatherUseCase.Params, WeatherModel>,
-                                private val locationManager: LocationManager)
+                                private val locationManager: LocationManager,
+                                private val stateManager: IStateManager)
     : BasePresenter<WeatherContract.View>(), WeatherContract.Presenter {
 
     private val locationListener = object : LocationListener {
@@ -51,6 +53,7 @@ internal class WeatherPresenter(private val invoker: Invoker,
         result.fold(ifLeft = {
             view?.showError(it)
         }, ifRight = {
+            stateManager.setWeather(it)
             view?.showWeather(mapper.mapToPresentation(it))
         })
     }

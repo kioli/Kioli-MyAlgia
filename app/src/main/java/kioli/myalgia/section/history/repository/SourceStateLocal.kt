@@ -2,15 +2,15 @@ package kioli.myalgia.section.history.repository
 
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
-import kioli.myalgia.section.history.entity.HistoryItemModel
+import kioli.myalgia.section.main.state.entity.StateModel
 
 /**
  * The data source contracts are part of the domain layer.
  * Their implementations belong to the data layer.
  */
-internal interface SourceHistoryLocal {
+internal interface SourceStateLocal {
 
-    fun getHistoryItems(): Either<MyError, List<HistoryItemModel>>
+    fun getStateItems(): Either<MyError, List<StateModel>>
 
-    fun saveHistoryItem(historyItemModel: HistoryItemModel)
+    fun saveState(stateModel: StateModel)
 }

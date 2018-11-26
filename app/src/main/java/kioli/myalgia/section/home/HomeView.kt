@@ -1,26 +1,17 @@
 package kioli.myalgia.section.home
 
-import android.content.Context
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
-import android.util.AttributeSet
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import kioli.myalgia.R
+import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.Element
 
-class HomeView @JvmOverloads constructor(context: Context,
-                                         attrs: AttributeSet? = null,
-                                         defStyleAttr: Int = 0) :
-        ScrollView(context, attrs, defStyleAttr) {
-
-    private val elements = listOf(
-            Element.ADD_EVENT_SOCIAL,
-            Element.PAIN,
-            Element.WEATHER)
+internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelativeLayout(activity) {
 
     private val recyclerView: RecyclerView by lazy {
         RecyclerView(context).apply {
@@ -31,12 +22,17 @@ class HomeView @JvmOverloads constructor(context: Context,
     }
 
     private val viewAdapter: ElementsAdapter by lazy {
-        ElementsAdapter(elements) {viewAdapter.addElement(Element.EVENT_SOCIAL)}
+        ElementsAdapter(activity, elements) { viewAdapter.addElement(Element.EVENT_SOCIAL) }
     }
 
     private val viewManager: RecyclerView.LayoutManager by lazy {
         LinearLayoutManager(context)
     }
+
+    val elements = listOf(
+            Element.ADD_EVENT_SOCIAL,
+            Element.PAIN,
+            Element.WEATHER)
 
     init {
         setBackgroundColor(ContextCompat.getColor(context, R.color.bg))

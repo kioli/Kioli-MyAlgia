@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "65699868937f02ca56c9deb98d2d48e5",
+    "identityHash": "578e0ccd9f32f5979e2671ad8cddab02",
     "entities": [
       {
         "tableName": "stateData",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `mood` INTEGER NOT NULL, `id` INTEGER NOT NULL, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `country` TEXT NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, `localtime_epoch` INTEGER NOT NULL, `localtime` TEXT NOT NULL, `last_updated_epoch` INTEGER NOT NULL, `last_updated` TEXT NOT NULL, `temperature_c` REAL NOT NULL, `temperature_f` REAL NOT NULL, `is_day` INTEGER NOT NULL, `wind_mph` REAL NOT NULL, `wind_kph` REAL NOT NULL, `wind_degree` INTEGER NOT NULL, `wind_direction` TEXT NOT NULL, `pressure_mb` REAL NOT NULL, `pressure_in` REAL NOT NULL, `precipitation_mm` REAL NOT NULL, `precipitation_in` REAL NOT NULL, `humidity` INTEGER NOT NULL, `cloud` INTEGER NOT NULL, `temp_feels_like_c` REAL NOT NULL, `temp_feels_like_f` REAL NOT NULL, `text` TEXT NOT NULL, `icon` TEXT NOT NULL, `code` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `mood` INTEGER NOT NULL, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `country` TEXT NOT NULL, `lat` REAL NOT NULL, `lon` REAL NOT NULL, `localtime_epoch` INTEGER NOT NULL, `localtime` TEXT NOT NULL, `last_updated_epoch` INTEGER NOT NULL, `last_updated` TEXT NOT NULL, `temperature_c` REAL NOT NULL, `temperature_f` REAL NOT NULL, `is_day` INTEGER NOT NULL, `wind_mph` REAL NOT NULL, `wind_kph` REAL NOT NULL, `wind_degree` INTEGER NOT NULL, `wind_direction` TEXT NOT NULL, `pressure_mb` REAL NOT NULL, `pressure_in` REAL NOT NULL, `precipitation_mm` REAL NOT NULL, `precipitation_in` REAL NOT NULL, `humidity` INTEGER NOT NULL, `cloud` INTEGER NOT NULL, `temp_feels_like_c` REAL NOT NULL, `temp_feels_like_f` REAL NOT NULL, `text` TEXT NOT NULL, `icon` TEXT NOT NULL, `code` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -21,169 +21,163 @@
             "notNull": true
           },
           {
-            "fieldPath": "weather.id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "weather.location.name",
+            "fieldPath": "location.name",
             "columnName": "name",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.region",
+            "fieldPath": "location.region",
             "columnName": "region",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.country",
+            "fieldPath": "location.country",
             "columnName": "country",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.lat",
+            "fieldPath": "location.lat",
             "columnName": "lat",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.lon",
+            "fieldPath": "location.lon",
             "columnName": "lon",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.localtime_epoch",
+            "fieldPath": "location.localtime_epoch",
             "columnName": "localtime_epoch",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.location.localtime",
+            "fieldPath": "location.localtime",
             "columnName": "localtime",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.last_updated_epoch",
+            "fieldPath": "weather.last_updated_epoch",
             "columnName": "last_updated_epoch",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.last_updated",
+            "fieldPath": "weather.last_updated",
             "columnName": "last_updated",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.temperature_c",
+            "fieldPath": "weather.temperature_c",
             "columnName": "temperature_c",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.temperature_f",
+            "fieldPath": "weather.temperature_f",
             "columnName": "temperature_f",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.is_day",
+            "fieldPath": "weather.is_day",
             "columnName": "is_day",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.wind_mph",
+            "fieldPath": "weather.wind_mph",
             "columnName": "wind_mph",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.wind_kph",
+            "fieldPath": "weather.wind_kph",
             "columnName": "wind_kph",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.wind_degree",
+            "fieldPath": "weather.wind_degree",
             "columnName": "wind_degree",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.wind_direction",
+            "fieldPath": "weather.wind_direction",
             "columnName": "wind_direction",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.pressure_mb",
+            "fieldPath": "weather.pressure_mb",
             "columnName": "pressure_mb",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.pressure_in",
+            "fieldPath": "weather.pressure_in",
             "columnName": "pressure_in",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.precipitation_mm",
+            "fieldPath": "weather.precipitation_mm",
             "columnName": "precipitation_mm",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.precipitation_in",
+            "fieldPath": "weather.precipitation_in",
             "columnName": "precipitation_in",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.humidity",
+            "fieldPath": "weather.humidity",
             "columnName": "humidity",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.cloud",
+            "fieldPath": "weather.cloud",
             "columnName": "cloud",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.temp_feels_like_c",
+            "fieldPath": "weather.temp_feels_like_c",
             "columnName": "temp_feels_like_c",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.temp_feels_like_f",
+            "fieldPath": "weather.temp_feels_like_f",
             "columnName": "temp_feels_like_f",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.condition.text",
+            "fieldPath": "weather.condition.text",
             "columnName": "text",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.condition.icon",
+            "fieldPath": "weather.condition.icon",
             "columnName": "icon",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "weather.current.condition.code",
+            "fieldPath": "weather.condition.code",
             "columnName": "code",
             "affinity": "INTEGER",
             "notNull": true
@@ -201,7 +195,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"65699868937f02ca56c9deb98d2d48e5\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"578e0ccd9f32f5979e2671ad8cddab02\")"
     ]
   }
 }

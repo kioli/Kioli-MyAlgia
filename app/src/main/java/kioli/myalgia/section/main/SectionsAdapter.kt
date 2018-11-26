@@ -1,4 +1,4 @@
-package kioli.myalgia.main
+package kioli.myalgia.section.main
 
 import android.support.v4.view.PagerAdapter
 import android.view.View
@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import kioli.myalgia.section.history.mvp.HistoryView
 import kioli.myalgia.section.home.HomeView
 
-internal class SectionsAdapter : PagerAdapter() {
+internal class SectionsAdapter(val homeView: HomeView, val historyView: HistoryView)
+    : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val layout = when (position) {
-            0 -> HomeView(container.context)
-            else -> HistoryView(container.context)
+            0 -> homeView
+            else -> historyView
         }
         layout.tag = Section.values()[position].tag
         container.addView(layout)

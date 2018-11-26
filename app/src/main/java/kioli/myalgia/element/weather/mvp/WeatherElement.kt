@@ -12,7 +12,7 @@ import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
 import kioli.myalgia.element.weather.di.weatherActivityModule
 import kioli.myalgia.element.weather.entity.WeatherUiModel
-import kioli.myalgia.main.MainActivity.Companion.permissionRequestLocation
+import kioli.myalgia.section.main.MainActivity.Companion.permissionRequestLocation
 import kotlinx.android.synthetic.main.view_weather.view.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
@@ -24,11 +24,13 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
     init {
         val view = View.inflate(context, R.layout.view_weather, null)
         view.setOnClickListener {
-            if ((context as AppCompatActivity).isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                requestWeather(true)
-                return@setOnClickListener
+            if (context is AppCompatActivity) {
+                if (context.isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    requestWeather(true)
+                    return@setOnClickListener
+                }
+                context.requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, permissionRequestLocation)
             }
-            context.requestPermission(Manifest.permission.ACCESS_FINE_LOCATION, permissionRequestLocation)
         }
         addView(view)
     }

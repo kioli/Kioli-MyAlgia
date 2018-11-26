@@ -1,14 +1,6 @@
 package kioli.myalgia.section.history.entity
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
-import kioli.myalgia.element.weather.entity.CurrentWeather
-import kioli.myalgia.element.weather.entity.Location
-
-@Entity(tableName = "historyData")
-internal data class HistoryItemModel(@PrimaryKey val id: Long = 0,
-                                     @SerializedName("mood") val mood: Int,
-                                     @Embedded val location: Location,
-                                     @Embedded val weather: CurrentWeather)
+internal data class HistoryItemModel(val mood: Int,
+                                     val location: String = "",
+                                     val temperature: Double = 0.0,
+                                     val temperatureFeelsLike: Double = 0.0)

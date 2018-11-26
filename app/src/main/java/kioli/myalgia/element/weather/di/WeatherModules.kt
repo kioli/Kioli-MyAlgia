@@ -18,7 +18,7 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
 fun weatherActivityModule() = Kodein.Module("module weather", false) {
-    bind<WeatherContract.Presenter>() with provider { WeatherPresenter(instance(), instance(), instance(), instance()) }
+    bind<WeatherContract.Presenter>() with provider { WeatherPresenter(instance(), instance(), instance(), instance(), instance()) }
     bind<WeatherRepository>() with provider { WeatherRepository(instance(), instance()) }
     bind<UseCase<WeatherUseCase.Params, WeatherModel>>() with provider { WeatherUseCase(instance()) }
 
@@ -27,7 +27,6 @@ fun weatherActivityModule() = Kodein.Module("module weather", false) {
     bind<SourceWeatherLocal>() with singleton { WeatherLocalDataSource(instance()) }
     bind<WeatherDb>() with singleton { Room.databaseBuilder(instance(), WeatherDb::class.java, "weather.db").build() }
     bind<LocationManager>() with singleton {
-        val context = instance() as Context
-        context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        (instance() as Context).getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
 }

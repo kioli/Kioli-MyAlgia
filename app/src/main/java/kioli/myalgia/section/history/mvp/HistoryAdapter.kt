@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kioli.myalgia.R
-import kioli.myalgia.section.history.entity.HistoryItemUiModel
+import kioli.myalgia.section.history.entity.HistoryItemModel
 import kotlinx.android.synthetic.main.item_history.view.*
 
-internal class HistoryAdapter(private var dataSet: List<HistoryItemUiModel>) :
+internal class HistoryAdapter(private var dataSet: List<HistoryItemModel>) :
         RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
 
     class MyViewHolder(private val historyView: View) : RecyclerView.ViewHolder(historyView) {
-        fun bind(item: HistoryItemUiModel) {
+        fun bind(item: HistoryItemModel) {
             historyView.history_mood.text = item.mood.toString()
             historyView.history_weather.text = item.location + " " + item.temperature
         }
@@ -30,7 +30,7 @@ internal class HistoryAdapter(private var dataSet: List<HistoryItemUiModel>) :
 
     override fun getItemCount() = dataSet.size
 
-    fun refreshData(items: List<HistoryItemUiModel>) {
+    fun refreshData(items: List<HistoryItemModel>) {
         dataSet = items
     }
 }

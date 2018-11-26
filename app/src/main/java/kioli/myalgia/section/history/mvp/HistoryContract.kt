@@ -2,7 +2,7 @@ package kioli.myalgia.element.weather.mvp
 
 import kioli.myalgia.common.mvp.PresenterI
 import kioli.myalgia.common.mvp.ViewI
-import kioli.myalgia.section.history.entity.HistoryItemUiModel
+import kioli.myalgia.section.history.entity.HistoryItemModel
 
 internal interface HistoryContract {
 
@@ -12,7 +12,7 @@ internal interface HistoryContract {
          *
          * @param historyItems the stored items
          */
-        fun showHistory(historyItems: List<HistoryItemUiModel>)
+        fun showHistory(historyItems: List<HistoryItemModel>)
 
         /**
          * Show empty state when no history items are stored already
@@ -28,11 +28,6 @@ internal interface HistoryContract {
          * Hide the loading screen in the HistoryView
          */
         fun hideLoading()
-
-        /**
-         * Request history items from the DB
-         */
-        fun requestHistoryItems()
     }
 
     interface Presenter : PresenterI<View> {

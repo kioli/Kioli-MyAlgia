@@ -3,21 +3,18 @@ package kioli.myalgia.section.history.mvp
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.AttributeSet
 import android.view.View
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.weather.mvp.HistoryContract
 import kioli.myalgia.section.history.di.historyViewModules
-import kioli.myalgia.section.history.entity.HistoryItemUiModel
+import kioli.myalgia.section.history.entity.HistoryItemModel
 import kotlinx.android.synthetic.main.view_history.view.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 
-internal class HistoryView @JvmOverloads constructor(context: Context,
-                                                     attrs: AttributeSet? = null,
-                                                     defStyleAttr: Int = 0) :
-        InjectedRelativeLayout(context, attrs, defStyleAttr), HistoryContract.View {
+internal class HistoryView(context: Context) :
+        InjectedRelativeLayout(context), HistoryContract.View {
 
     private val presenter by instance<HistoryContract.Presenter>()
 
@@ -50,7 +47,7 @@ internal class HistoryView @JvmOverloads constructor(context: Context,
         presenter.detachView()
     }
 
-    override fun showHistory(historyItems: List<HistoryItemUiModel>) {
+    override fun showHistory(historyItems: List<HistoryItemModel>) {
         history_empty.visibility = GONE
         viewAdapter.refreshData(historyItems)
     }
@@ -68,9 +65,5 @@ internal class HistoryView @JvmOverloads constructor(context: Context,
     override fun hideLoading() {
         history_empty.visibility = GONE
         history_loading.visibility = VISIBLE
-    }
-
-    override fun requestHistoryItems() {
-        // do nothing
     }
 }

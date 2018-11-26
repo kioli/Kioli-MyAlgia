@@ -6,12 +6,12 @@ import kioli.myalgia.common.interactor.Invoker
 import kioli.myalgia.common.interactor.UseCase
 import kioli.myalgia.common.mvp.BasePresenter
 import kioli.myalgia.element.weather.mvp.HistoryContract
-import kioli.myalgia.section.history.entity.HistoryItemModel
+import kioli.myalgia.section.main.state.entity.StateModel
 import kioli.myalgia.section.history.mapper.HistoryMapper
 
 internal class HistoryPresenter(private val invoker: Invoker,
                                 private val mapper: HistoryMapper,
-                                private val getHistory: UseCase<Unit, List<HistoryItemModel>>)
+                                private val getHistory: UseCase<Unit, List<StateModel>>)
     : BasePresenter<HistoryContract.View>(), HistoryContract.Presenter {
 
     override fun getHistoryItems() {
@@ -20,7 +20,7 @@ internal class HistoryPresenter(private val invoker: Invoker,
         invoker.execute(getHistory, params, ::onHistoryArrived)
     }
 
-    private fun onHistoryArrived(result: Either<MyError, List<HistoryItemModel>>) {
+    private fun onHistoryArrived(result: Either<MyError, List<StateModel>>) {
         view?.hideLoading()
         result.fold(ifLeft = {
             view?.showEmptyState()

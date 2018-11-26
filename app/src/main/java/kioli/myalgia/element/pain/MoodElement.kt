@@ -4,19 +4,15 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.support.v4.content.ContextCompat
 import android.support.v7.content.res.AppCompatResources
-import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import kioli.myalgia.R
 import kioli.myalgia.common.component.CheckableImageView
-import kioli.myalgia.common.component.ElementContainer
+import kioli.myalgia.common.di.InjectedContainer
 
-internal class MoodElement @JvmOverloads constructor(context: Context,
-                                                     attrs: AttributeSet? = null,
-                                                     defStyleAttr: Int = 0) :
-        ElementContainer(context, attrs, defStyleAttr) {
+internal class MoodElement(context: Context) : InjectedContainer(context) {
 
     private val moodIcons by lazy {
         listOf(R.drawable.ic_mood1,
@@ -58,11 +54,12 @@ internal class MoodElement @JvmOverloads constructor(context: Context,
     }
 
     private fun moodSelected(view: View) {
-        moods.forEach { mood ->
+        moods.forEachIndexed { index, mood ->
             if (mood.tag != view.tag) {
                 setMoodUnchecked(mood)
-                return@forEach
+                return@forEachIndexed
             }
+            stateManager.setMood(index)
             setMoodChecked(mood)
         }
     }
