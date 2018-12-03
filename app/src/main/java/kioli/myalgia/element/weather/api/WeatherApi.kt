@@ -1,6 +1,6 @@
 package kioli.myalgia.element.weather.api
 
-import kioli.myalgia.element.weather.entity.WeatherModel
+import kioli.myalgia.element.weather.entity.WeatherApiModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,5 +12,5 @@ internal interface WeatherApi {
 
     @GET("current.json")
     fun loadWeather(@Query("key") key: String,
-                    @Query("q") latLon: String): Call<WeatherModel>
+                    @Query("q") latLon: String): Call<WeatherApiModel>
 }

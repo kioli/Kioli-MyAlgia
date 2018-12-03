@@ -10,7 +10,7 @@ import kioli.myalgia.common.di.InjectedContainer
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.ext.isPermissionGranted
 import kioli.myalgia.common.ext.requestPermission
-import kioli.myalgia.element.weather.di.weatherActivityModule
+import kioli.myalgia.element.weather.di.weatherElementModule
 import kioli.myalgia.element.weather.entity.WeatherUiModel
 import kioli.myalgia.section.main.MainActivity.Companion.permissionRequestLocation
 import kotlinx.android.synthetic.main.view_weather.view.*
@@ -36,7 +36,7 @@ internal class WeatherElement(context: Context) : InjectedContainer(context), We
     }
 
     override fun elementModule() = Kodein.Module("module weather element", false) {
-        import(weatherActivityModule())
+        import(weatherElementModule(context))
     }
 
     override fun onAttachedToWindow() {

@@ -29,6 +29,9 @@ android {
             buildConfigField "String", WEATHER_KEY, '"e44d02fff19244c3b30205216181609"'
         }
     }
+    androidExtensions {
+        experimental = true
+    }
 }
 
 configurations.all {
@@ -39,6 +42,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation Lib.androidPlayService
     implementation Lib.constraintLayout
     implementation Lib.coroutinesAndroid
     implementation Lib.coroutinesCore

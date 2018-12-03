@@ -2,7 +2,7 @@ package kioli.myalgia.element.weather.repository
 
 import kioli.myalgia.common.error.MyError
 import kioli.myalgia.common.functional.Either
-import kioli.myalgia.element.weather.entity.WeatherModel
+import kioli.myalgia.element.weather.entity.WeatherApiModel
 
 /**
  * The data source contracts are part of the domain layer.
@@ -16,5 +16,5 @@ internal interface SourceWeatherNetwork {
      * @param latitude latitude of the location to fetch the weather for
      * @param longitude longitude of the location to fetch the weather for
      */
-    fun getWeather(latitude: Double, longitude: Double): Either<MyError, WeatherModel>
+    fun getWeather(latitude: Double, longitude: Double): Either<MyError, WeatherApiModel>
 }

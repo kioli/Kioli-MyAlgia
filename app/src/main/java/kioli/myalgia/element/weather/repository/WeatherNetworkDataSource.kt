@@ -7,11 +7,11 @@ import kioli.myalgia.common.functional.Try
 import kioli.myalgia.common.functional.left
 import kioli.myalgia.common.functional.right
 import kioli.myalgia.element.weather.api.WeatherApi
-import kioli.myalgia.element.weather.entity.WeatherModel
+import kioli.myalgia.element.weather.entity.WeatherApiModel
 
 internal class WeatherNetworkDataSource(private val service: WeatherApi) : SourceWeatherNetwork {
 
-    override fun getWeather(latitude: Double, longitude: Double): Either<MyError, WeatherModel> =
+    override fun getWeather(latitude: Double, longitude: Double): Either<MyError, WeatherApiModel> =
             Try {
                 val latLon = latitude.toString().plus(",").plus(longitude)
                 service.loadWeather(BuildConfig.WEATHER_KEY, latLon).execute()

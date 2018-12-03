@@ -4,13 +4,13 @@ package kioli.myalgia.common.mapper
  * Interface for model mappers.
  * It provides helper methods that facilitate retrieving of models from outer data source layers
  *
- * @param <P> the PRESENTATION model input type
- * @param <D> the STORED model return type
+ * @param <L> the LEFT model input type
+ * @param <R> the RIGHT model return type
  */
-interface Mapper<P, S> {
+interface Mapper<L, R> {
 
-    fun mapToStored(type: P): S
+    fun mapToRight(type: L): R
 
-    fun mapToPresentation(type: S): P
+    fun mapToLeft(type: R): L
 
 }

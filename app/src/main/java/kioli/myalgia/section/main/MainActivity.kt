@@ -9,8 +9,6 @@ import android.view.Menu
 import android.view.MenuItem
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
-import kioli.myalgia.element.Element
-import kioli.myalgia.element.weather.mvp.WeatherContract
 import kioli.myalgia.section.history.mvp.HistoryView
 import kioli.myalgia.section.home.HomeView
 import kioli.myalgia.section.main.state.manager.IStateManager
@@ -81,8 +79,7 @@ internal class MainActivity : InjectedActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == permissionRequestLocation && grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
-            val weatherElement = homeView.elements.firstOrNull { it.name == Element.WEATHER.name }
-            weatherElement?.let { (it as WeatherContract.View).requestWeather(true) }
+            homeView.requestWeather(true)
             return
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

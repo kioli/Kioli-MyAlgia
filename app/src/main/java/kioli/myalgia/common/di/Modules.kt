@@ -37,7 +37,6 @@ fun appModule(appContext: Context) = Kodein.Module("module app", false) {
     bind<Context>() with provider { appContext }
     bind<CoroutineDispatcher>() with provider { AsyncTask.THREAD_POOL_EXECUTOR.asCoroutineDispatcher() }
     bind<UseCase<StoreStateUseCase.Params, StateModel>>() with provider { StoreStateUseCase(instance()) }
-
     bind<List<Option>>() with provider {
         val context = instance() as Context
         Setting.values().map { context.readSettingOptionFromSharedPref(it) }

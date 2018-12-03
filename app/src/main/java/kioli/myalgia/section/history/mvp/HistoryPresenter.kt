@@ -25,7 +25,7 @@ internal class HistoryPresenter(private val invoker: Invoker,
         result.fold(ifLeft = {
             view?.showEmptyState()
         }, ifRight = { listModels ->
-            view?.showHistory(listModels.map { mapper.mapToPresentation(it) })
+            view?.showHistory(listModels.map { mapper.mapToLeft(it) })
         })
     }
 }

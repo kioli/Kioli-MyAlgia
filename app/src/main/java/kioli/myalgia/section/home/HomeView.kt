@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.Element
+import kioli.myalgia.element.weather.mvp.WeatherElement
 
 internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelativeLayout(activity) {
 
@@ -29,7 +30,7 @@ internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelat
         LinearLayoutManager(context)
     }
 
-    val elements = listOf(
+    private val elements = listOf(
             Element.ADD_EVENT_SOCIAL,
             Element.PAIN,
             Element.WEATHER)
@@ -46,5 +47,12 @@ internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelat
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(recyclerView)
         addView(recyclerView)
+    }
+
+    fun requestWeather(forceNewWeather: Boolean) {
+        val weatherElement = viewManager.findViewByPosition(2)
+        if (weatherElement != null && weatherElement is WeatherElement) {
+            weatherElement.requestWeather(forceNewWeather)
+        }
     }
 }

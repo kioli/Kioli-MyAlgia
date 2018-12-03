@@ -2,6 +2,7 @@ object Version {
     //Android
     const val androidCompileSdk = 28
     const val androidMinSdk = 16
+    const val androidPlayService = "11.6.0"
     const val androidTargetSdk = 28
     const val androidVersionCode = 1
     const val androidVersionName = "1.0.0"
@@ -31,6 +32,7 @@ object Version {
 }
 
 object Lib {
+    const val androidPlayService = "com.google.android.gms:play-services-location:${Version.androidPlayService}"
     const val constraintLayout = "com.android.support.constraint:constraint-layout:${Version.constraintLayout}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutines}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
