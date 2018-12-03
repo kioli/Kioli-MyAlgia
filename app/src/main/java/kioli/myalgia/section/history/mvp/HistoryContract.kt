@@ -28,6 +28,11 @@ internal interface HistoryContract {
          * Hide the loading screen in the HistoryView
          */
         fun hideLoading()
+
+        /**
+         *
+         */
+        fun loadHistory()
     }
 
     interface Presenter : PresenterI<View> {

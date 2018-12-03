@@ -39,7 +39,7 @@ internal class HistoryView(context: Context) :
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         presenter.attachView(this)
-        presenter.getHistoryItems()
+        loadHistory()
     }
 
     override fun onDetachedFromWindow() {
@@ -50,20 +50,22 @@ internal class HistoryView(context: Context) :
     override fun showHistory(historyItems: List<HistoryItemModel>) {
         history_empty.visibility = GONE
         viewAdapter.refreshData(historyItems)
+        viewAdapter.notifyDataSetChanged()
     }
 
     override fun showEmptyState() {
         history_empty.visibility = VISIBLE
-        history_loading.visibility = GONE
     }
 
     override fun showLoading() {
-        history_empty.visibility = GONE
         history_loading.visibility = VISIBLE
     }
 
     override fun hideLoading() {
-        history_empty.visibility = GONE
-        history_loading.visibility = VISIBLE
+        history_loading.visibility = GONE
+    }
+
+    override fun loadHistory() {
+        presenter.getHistoryItems()
     }
 }

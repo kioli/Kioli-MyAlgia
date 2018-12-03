@@ -14,14 +14,13 @@ internal class HistoryAdapter(private var dataSet: List<HistoryItemModel>) :
     class MyViewHolder(private val historyView: View) : RecyclerView.ViewHolder(historyView) {
         fun bind(item: HistoryItemModel) {
             historyView.history_mood.text = item.mood.toString()
-            historyView.history_weather.text = item.location + " " + item.temperature
+            historyView.history_weather.text = "${item.location} ${item.temperature}"
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
         return MyViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

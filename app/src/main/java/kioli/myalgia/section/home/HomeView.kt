@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
 import kioli.myalgia.R
@@ -19,6 +20,7 @@ internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelat
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
             layoutManager = viewManager
             adapter = viewAdapter
+            overScrollMode = View.OVER_SCROLL_NEVER
         }
     }
 

@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import kioli.myalgia.R
 import kioli.myalgia.common.di.InjectedActivity
+import kioli.myalgia.element.weather.mvp.HistoryContract
 import kioli.myalgia.section.history.mvp.HistoryView
 import kioli.myalgia.section.home.HomeView
 import kioli.myalgia.section.main.state.manager.IStateManager
@@ -20,10 +21,12 @@ internal class MainActivity : InjectedActivity() {
 
     private val stateManager by instance<IStateManager>()
 
-    private val sectionsAdapter: SectionsAdapter by lazy { SectionsAdapter(homeView, historyView) }
-
     private val homeView by lazy { HomeView(this) }
-    private val historyView by lazy { HistoryView(baseContext) }
+    private val historyView: HistoryContract.View by lazy { HistoryView(baseContext) }
+
+    private val sectionsAdapter: SectionsAdapter by lazy {
+        SectionsAdapter(homeView, historyView as HistoryView)
+    }
 
     private val pageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) = Unit
@@ -71,6 +74,7 @@ internal class MainActivity : InjectedActivity() {
             }
             R.id.save -> {
                 stateManager.storeState()
+                historyView.loadHistory()
                 true
             }
             else -> super.onOptionsItemSelected(item)
