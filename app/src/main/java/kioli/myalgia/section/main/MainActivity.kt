@@ -22,7 +22,7 @@ internal class MainActivity : InjectedActivity() {
     private val stateManager by instance<IStateManager>()
 
     private val homeView by lazy { HomeView(this) }
-    private val historyView: HistoryContract.View by lazy { HistoryView(baseContext) }
+    private val historyView: HistoryContract.View by lazy { HistoryView(this) }
 
     private val sectionsAdapter: SectionsAdapter by lazy {
         SectionsAdapter(homeView, historyView as HistoryView)

@@ -1,10 +1,11 @@
 package kioli.myalgia.section.history.mvp
 
-import android.content.Context
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kioli.myalgia.R
+import kioli.myalgia.common.component.RecyclerItemClickListener
 import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.weather.mvp.HistoryContract
 import kioli.myalgia.section.history.di.historyViewModules
@@ -13,9 +14,10 @@ import kotlinx.android.synthetic.main.view_history.view.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 
-internal class HistoryView(context: Context) :
-        InjectedRelativeLayout(context), HistoryContract.View {
+internal class HistoryView(activity: AppCompatActivity) :
+        InjectedRelativeLayout(activity), HistoryContract.View {
 
+    private val detailsTag = "details fragment dialog"
     private val presenter by instance<HistoryContract.Presenter>()
 
     private val viewAdapter: HistoryAdapter by lazy {
@@ -30,6 +32,15 @@ internal class HistoryView(context: Context) :
         View.inflate(context, R.layout.view_history, this)
         history_list.layoutManager = viewManager
         history_list.adapter = viewAdapter
+        history_list.addOnItemTouchListener(object : RecyclerItemClickListener(
+                context,
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        HistoryDetails.getInstance(viewAdapter.getItemFromPosition(position))
+                                .show(activity.supportFragmentManager, detailsTag)
+                    }
+                }) {}
+        )
     }
 
     override fun linearLayoutModule() = Kodein.Module("module history view", false) {

@@ -13,7 +13,7 @@ import kioli.myalgia.common.di.InjectedRelativeLayout
 import kioli.myalgia.element.Element
 import kioli.myalgia.element.weather.mvp.WeatherElement
 
-internal class HomeView constructor(activity: AppCompatActivity) : InjectedRelativeLayout(activity) {
+internal class HomeView(activity: AppCompatActivity) : InjectedRelativeLayout(activity) {
 
     private val recyclerView: RecyclerView by lazy {
         RecyclerView(context).apply {

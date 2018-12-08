@@ -32,4 +32,6 @@ internal class HistoryAdapter(private var dataSet: List<HistoryItemModel>) :
     fun refreshData(items: List<HistoryItemModel>) {
         dataSet = items
     }
+
+    fun getItemFromPosition(position: Int) = dataSet[position]
 }

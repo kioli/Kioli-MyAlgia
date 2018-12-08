@@ -15,7 +15,6 @@ import kioli.myalgia.element.weather.interactor.WeatherUseCase
 import kioli.myalgia.element.weather.mapper.WeatherDbUiMapper
 import kioli.myalgia.section.main.state.manager.IStateManager
 
-
 internal class WeatherPresenter(private val invoker: Invoker,
                                 private val mapper: WeatherDbUiMapper,
                                 private val getWeather: UseCase<WeatherUseCase.Params, WeatherDbModel>,
